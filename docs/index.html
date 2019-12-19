@@ -9,6 +9,11 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
 </head>
+<style>
+  .markdown-section {
+    max-width: 1000px;
+  }
+</style>
 <body>
   <div id="app"></div>
   <script>
@@ -30,11 +35,26 @@
           '/': 'Search'
         }
       },
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === "dot") {
+              return (
+              '<div class="viz">'+ Viz(code, "SVG")+'</div>'
+              );
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      }
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+  <script src="//unpkg.com/docsify-copy-code"></script>
   <script src="//unpkg.com/docsify/lib/plugins/ga.js"></script>
+  <script src="https://cdn.bootcss.com/viz.js/1.8.0/viz.js"></script>
 </body>
 </html>
