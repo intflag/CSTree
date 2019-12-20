@@ -6,13 +6,13 @@
 ### 继承体系图
 ![](http://images.intflag.com/collection01-001.jpg)
 ### 成员变量
-- `DEFAULT_CAPACITY`：默认初始化容量，长度为10。
-- `EMPTY_ELEMENTDATA`：用于空实例的共享空数组。
-- `DEFAULTCAPACITY_EMPTY_ELEMENTDATA`：用于默认大小的空实例的共享空数组。
-- `elementData`：存储ArrayList元素的数组缓冲区。
+- `private static final int DEFAULT_CAPACITY = 10`：默认初始化容量，长度为10。
+- `private static final Object[] EMPTY_ELEMENTDATA = {}`：用于空实例的共享空数组。
+- `private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {}`：用于默认大小的空实例的共享空数组。
+- `transient Object[] elementData`：存储ArrayList元素的数组缓冲区。
 由于ArrayList是基于动态数组实现的，所以并不是所有的空间都被使用。因此使用了`transient`修饰，可以防止被自动序列化。
 所以ArrayList自定义了序列化与反序列化的实现，只序列化了被使用的数据。
-- `size`：ArrayList元素个数。
+- `private int size`：ArrayList元素个数。
 
 ### 构造方法
 - `public ArrayList()`：空参构造。
@@ -52,7 +52,7 @@ private void grow(int minCapacity) {
 }
 ```
 通过分析源码我们得知，ArrayList在进行扩容时需要对数据进行拷贝，所以平时在使用的时候最好手动指定大小，尽量减少扩容操作。
-- `public E remove(int index)`：在指定位置删除元素。首先会对索引进行校验，然后找到要删除的元素，计算需要移动的位数，接着对数据进行移动，然后将最后一个元素的位置赋值为null，让虚拟机的垃圾回收机制更快的回收它。
+- `public E remove(int index)`：删除指定位置上的元素。首先会对索引进行校验，然后找到要删除的元素，计算需要移动的位数，接着对数据进行移动，然后将最后一个元素的位置赋值为null，让虚拟机的垃圾回收机制更快的回收它。
 ```java
 public E remove(int index) {
     rangeCheck(index);
@@ -87,27 +87,113 @@ public int indexOf(Object o) {
 ## LinkedList
 ### 继承体系图
 ![](http://images.intflag.com/collection01-002.jpg)
-### 成员变量
-### 构造方法
-### 核心方法
+### 数据结构
+![](http://images.intflag.com/collection01-002-1.jpg)
+> 在JDK1.8中，LinkedList底层是基于双向链表实现的。
 
-## HashSet
-### 继承体系图
-![](http://images.intflag.com/collection01-003.jpg)
 ### 成员变量
-### 构造方法
-### 核心方法
+- `transient int size = 0`：列表长度，默认为0。
+- `transient Node<E> first`：指向头结点的指针。
+- `transient Node<E> last`：指向尾结点的指针。
 
-## TreeSet
-### 继承体系图
-![](http://images.intflag.com/collection01-004.jpg)
-### 成员变量
 ### 构造方法
+- `public LinkedList()`：空参构造，内部没有任何实现。
+- `public LinkedList(Collection<? extends E> c)`：通过集合实例化，内部调用了`addAll`方法实现。
+
 ### 核心方法
+- `public boolean add(E e)`：添加元素到列表末尾。
+```java
+public boolean add(E e) {
+    linkLast(e);
+    return true;
+}
+void linkLast(E e) {
+    final Node<E> l = last;
+    final Node<E> newNode = new Node<>(l, e, null);
+    last = newNode;
+    if (l == null)
+        first = newNode;
+    else
+        l.next = newNode;
+    size++;
+    modCount++;
+}
+```
+由源码可知，在新增元素的时候首先会定义一个变量保存尾指针，然后新建一个节点将元素保存，并且将尾指针指向新节点，但如果尾指针为`null`的话会将头指针指向新节点，否则将之前保存的上一个节点的后继指针指向新节点，这样新节点就被链起来了。
+- `public E get(int index)`：获取指定位置上的元素。
+```java
+public E get(int index) {
+    checkElementIndex(index);
+    return node(index).item;
+}
+Node<E> node(int index) {
+    // assert isElementIndex(index);
+
+    if (index < (size >> 1)) {
+        Node<E> x = first;
+        for (int i = 0; i < index; i++)
+            x = x.next;
+        return x;
+    } else {
+        Node<E> x = last;
+        for (int i = size - 1; i > index; i--)
+            x = x.prev;
+        return x;
+    }
+}
+```
+通过分析源码可以得知，首先对索引进行校验，然后调用了`Node<E> node(int index)`方法，该方法的功能是返回索引位置的节点，基本原理很简单，就是将`index`与列表的一半`size >> 1`进行比较，如果靠前，就从头指针开始向右移动，反之，则从尾指针开始向左移动，利用双向链表的这一特性，LinkedList获取节点的时间复杂度就是`O(n/2)`。
+- `public E remove(int index)`：删除指定位置上的元素。
+```java
+    public E remove(int index) {
+        checkElementIndex(index);
+        return unlink(node(index));
+    }
+    E unlink(Node<E> x) {
+        // assert x != null;
+        final E element = x.item;
+        final Node<E> next = x.next;
+        final Node<E> prev = x.prev;
+
+        if (prev == null) {
+            first = next;
+        } else {
+            prev.next = next;
+            x.prev = null;
+        }
+
+        if (next == null) {
+            last = prev;
+        } else {
+            next.prev = prev;
+            x.next = null;
+        }
+
+        x.item = null;
+        size--;
+        modCount++;
+        return element;
+    }
+```
+由源码可知，删除一个节点主要是调用了`E unlink(Node<E> x)`，从方法的名字也能明白，本质上就是断开了要删除节点和前后节点之间的引用。可以参考下面这个示意图。<br>
+![](http://images.intflag.com/collection01-002-2.jpg)
 
 ## HashMap
 ### 继承体系图
 ![](http://images.intflag.com/collection01-005.jpg)
+### 数据结构
+> 在jdk1.7中，HashMap采用数组+链表(拉链法)。因为数组是一组连续的内存空间，易查询，不易增删，而链表是不连续的内存空间，通过节点相互连接，易删除，不易查询。HashMap结合这两者的优秀之处来提高效率。<br><br>而在jdk1.8时，为了解决当hash碰撞过于频繁，而链表的查询效率(时间复杂度为O(n))过低时，当链表的长度达到一定值(默认是8)时，将链表转换成红黑树(时间复杂度为O(lg n))，极大的提高了查询效率。
+
+![](http://images.intflag.com/collection01-005-1.png) 
+
+### 成员变量
+- `static final int DEFAULT_INITIAL_CAPACITY = 1 << 4`：默认初始容量，默认为16。
+- `static final int MAXIMUM_CAPACITY = 1 << 30`：最大容量，为2的30次方。
+- `static final float DEFAULT_LOAD_FACTOR = 0.75f`：默认负载因子，默认为0.75。
+- `static final int TREEIFY_THRESHOLD = 8`：将链表转换为红黑树的阈值。
+- `static final int UNTREEIFY_THRESHOLD = 6`：将红黑树转换回链表的阈值。
+- `static final int MIN_TREEIFY_CAPACITY = 64`：。
+
 ### 成员变量
 ### 构造方法
 ### 核心方法
@@ -115,6 +201,19 @@ public int indexOf(Object o) {
 ## TreeMap
 ### 继承体系图
 ![](http://images.intflag.com/collection01-006.jpg)
+### 成员变量
+### 构造方法
+### 核心方法
+
+## HashSet
+### 继承体系图
+![](http://images.intflag.com/collection01-003.jpg)
+### 构造方法
+### 核心方法
+
+## TreeSet
+### 继承体系图
+![](http://images.intflag.com/collection01-004.jpg)
 ### 成员变量
 ### 构造方法
 ### 核心方法
