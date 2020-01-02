@@ -26,6 +26,7 @@ Pinpoint 主要由 3 个组件外加 Hbase 数据库组成，三个组件分别�
 - 官方文档：https://naver.github.io/pinpoint/index.html
 - 博客：https://www.cnblogs.com/yyhh/p/6106472.html
 - 博客：https://www.jianshu.com/p/a8482f01af4a（推荐）
+
 ### 下载源码
 - 进入github上的releases页面：https://github.com/naver/pinpoint/releases
 - 找到准备编译的版本，本次我们选择1.7.3，（注意：如果想直接部署，可以下载已经编译好的三个包：pinpoint-agent-1.7.3.tar.gz、pinpoint-collector-1.7.3.war、pinpoint-web-1.7.3.war直接部署即可，部署过程可以参考下一小节）
@@ -47,3 +48,187 @@ Pinpoint 主要由 3 个组件外加 Hbase 数据库组成，三个组件分别�
 ![](http://images.intflag.com/pinpoint01-007.jpg)
 - 当出现`BUILD SUCCESS`即表示编译成功，初次编译会下载很多依赖，时间特别长，至少需要30分钟。
 ![](http://images.intflag.com/pinpoint01-008.jpg) 
+
+## 使用idea运行Pinpoint项目
+### 配置Pinpoint运行环境
+- 下载Hbase，解压到非中文目录下
+- 配置`hbase-1.4.12\conf\hbase-env.cmd`，设置JAVA_HOME环境变量，如果是linux环境请修改hbase-env.sh文件。
+![](http://images.intflag.com/pinpoint01-009.jpg) 
+- 配置`hbase-1.4.12\conf\hbase-site.xml`，配置hbase和zookeeper数据文件地址，配置后在Hbase启动时会自动创建。
+```
+<configuration>
+    <property>
+        <name>hbase.rootdir</name>
+        <value>file:///D:\010-WorkingSpace\099-AppData\hbase_data</value>
+    </property>
+    <property>
+        <name>hbase.zookeeper.property.dataDir</name>
+        <value>D:\010-WorkingSpace\099-AppData\zookeeper_data</value>
+    </property>
+</configuration>
+```
+- 如果此时启动Hbase可能会报错，建议安装Hadoop。
+- 下载Hadoop，解压到非中文目录下，配置环境变量
+![](http://images.intflag.com/pinpoint01-010.jpg) 
+- 启动HBase，进入bin目录，运行start-hbase.cmd文件；此时使用的是hbase自带的zookeeper。
+- 使用jps命令查看hbase进程是否启动
+```
+D:\java\hbase\hbase-1.4.2\bin>jps
+14048 Program
+15256 HMaster
+20056
+8952 Jps
+```
+- 初始化Pinpoint需要的数据表，数据表脚本在pinpoint源码目录\hbase\scripts\hbase-create.hbase文件中
+```
+hbase shell E:\workspace\git\pinpoint-master\hbase\scripts\hbase-create.hbase
+```
+- 查看导入的数据表，hbase shell进入hbase交互环境后，执行list命令查看表
+```
+D:\java\hbase\hbase-1.4.2\bin>hbase shell
+hbase(main):001:0> list
+TABLE                                                                                                                   
+AgentEvent                                                                                                              
+AgentInfo                                                                                                               
+AgentLifeCycle                                                                                                          
+AgentStatV2                                                                                                             
+ApiMetaData                                                                                                             
+ApplicationIndex                                                                                                        
+ApplicationMapStatisticsCallee_Ver2                                                                                     
+ApplicationMapStatisticsCaller_Ver2                                                                                     
+ApplicationMapStatisticsSelf_Ver2                                                                                       
+ApplicationStatAggre                                                                                                    
+ApplicationTraceIndex                                                                                                   
+HostApplicationMap_Ver2                                                                                                 
+SqlMetaData_Ver2                                                                                                        
+StringMetaData                                                                                                          
+TraceV2                                                                                                                 
+15 row(s) in 0.2060 seconds
+```
+### idea运行Pinpoint
+- 使用idea打开Pinpoint源码
+- 配置Tomcat，现在项目，点击菜单栏的`Run`按钮，然后选择`Edit configurations`。
+![](http://images.intflag.com/pinpoint01-011.jpg) 
+- 新增一个Tomcat，这里使用`apache-tomcat-8.5.31`。
+![](http://images.intflag.com/pinpoint01-012.jpg) 
+- 点击`Development`，然后点击加号，选择web和collector的war包。
+![](http://images.intflag.com/pinpoint01-013.jpg) 
+- 启动项目，注意端口占用情况。
+![](http://images.intflag.com/pinpoint01-014.jpg) 
+- 启动成功后，idea会自动打开Pinpoint的web界面。
+![](http://images.intflag.com/pinpoint01-015.jpg) 
+
+## Centos7部署Pinpoint
+### 部署环境准备
+- jdk-1.8
+- hbase-1.5.0-bin.tar.gz
+- apache-tomcat-8.0.36.tar.gz
+- pinpoint-web-1.7.3.war
+- pinpoint-collector-1.7.3.war
+- pinpoint-agent-1.7.3.tar.gz
+### 安装jdk
+- 查看已安装的jdk
+```
+[root@localhost jdk1.8.0_171]# rpm -qa | grep java
+tzdata-java-2017b-1.el7.noarch
+python-javapackages-3.4.1-11.el7.noarch
+java-1.8.0-openjdk-1.8.0.131-11.b12.el7.x86_64
+java-1.8.0-openjdk-headless-1.8.0.131-11.b12.el7.x86_64
+javapackages-tools-3.4.1-11.el7.noarch
+```
+- 删除默认的openjdk
+```
+[root@localhost jdk1.8.0_171]# rpm -e --nodeps java-1.8.0-openjdk-1.8.0.131-11.b12.el7.x86_64 java-1.8.0-openjdk-headless-1.8.0.131-11.b12.el7.x86_64
+[root@localhost jdk1.8.0_171]# rpm -qa | grep java
+tzdata-java-2017b-1.el7.noarch
+python-javapackages-3.4.1-11.el7.noarch
+javapackages-tools-3.4.1-11.el7.noarch
+[root@localhost jdk1.8.0_171]# 
+```
+- 解压jdk安装包到非中文目录
+```
+tar -zxf jdk-8u171-linux-x64.tar.gz -C ../module/
+```
+- 复制jdk目录：/opt/module/jdk1.8.0_171
+- 配置JDK环境变量
+```
+sudo vi /etc/profile
+按shift + G 到文件最后一行
+输入下面配置
+#JAVA_HOME
+export JAVA_HOME=/opt/module/jdk1.8.0_171
+export PATH=$PATH:$JAVA_HOME/bin
+```
+- 刷新配置
+```
+source /etc/profile
+```
+### 安装Hbase
+- 解压Hbase安装包到非中文目录
+```
+tar -zxf hbase-1.5.0-bin.tar.gz -C ../module/
+```
+- 配置`conf\hbase-env.sh`，设置JAVA_HOME环境变量。
+- 配置`conf\hbase-site.xml`，配置hbase数据文件地址，配置后在Hbase启动时会自动创建。
+```
+<configuration>
+    <property>
+      <name>hbase.rootdir</name>
+      <value>file:///opt/module/hbase_data</value>
+   </property>
+</configuration>
+```
+- 进入`bin\`，执行`./start-hbase.sh`启动Hbase，启动后使用`jps`命令查看是否有`HMaster`进程。
+```
+[root@localhost bin]# jps
+6001 Jps
+5947 HMaster
+```
+- 初始化Pinpoint需要的数据表，数据表脚本在pinpoint源码目录\hbase\scripts\hbase-create.hbase文件中
+```
+./hbase shell /opt/software/hbase-create.hbase
+```
+![](http://images.intflag.com/pinpoint01-018.jpg)
+### 部署pinpoint监控程序
+- 安装tomcat，将tomcat安装包解压到非中文目录
+```
+tar -zxf apache-tomcat-8.0.36.tar.gz -C ../module/
+```
+- 然后分别将`pinpoint-collector`和`pinpoint-web`的war包放到刚才解压的tomcat的`webapps`目录中
+```
+cp pinpoint-web-1.7.3.war pinpoint-collector-1.7.3.war ../module/apache-tomcat-8.0.36/webapps/
+```
+- 进入tomcat`bin`目录，执行`./startup.sh`，启动tomcat，启动时可以查看日志`tail -f ../logs/catalina.out`。
+- 启动后访问`http://主机:8080/pinpoint-web-1.7.3/`，查看是否能访问`Pinpoint Web`界面。
+![](http://images.intflag.com/pinpoint01-016.jpg) 
+- 如果懒得输项目名的话，可以配置tomcat的`conf/server.xml`文件进行修改。
+```
+<Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">
+
+    <!--要在Host标签中添加下面这行配置，指定默认访问的目录-->
+    <Context docBase="/opt/module/apache-tomcat-8.0.36/webapps/pinpoint-web-1.7.3" path="" debug="0"  reloadable="true"/>
+
+    <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="localhost_access_log" suffix=".txt" pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+</Host>
+```
+![](http://images.intflag.com/pinpoint01-017.jpg)
+
+## 部署java程序接入Pinpoint监控
+- 将Pinpoint-agent程序解压到准备监控的程序所在主机上
+```
+tar -zxvf pinpoint-agent-1.7.3.tar.gz -C ../module/pinpoint-agent-1.7.3
+```
+- 编写程序启动脚本
+```
+nohup java -javaagent:/opt/module/pinpoint-agent-1.7.3/pinpoint-bootstrap-1.7.3.jar -Dpinpoint.applicationName=pinpointTest -Dpinpoint.agentId=pinpointTest -jar pinpoint-test-a-0.0.1-SNAPSHOT.jar >run.log 2>&1 &
+```
+- 对脚本授权
+```
+chmod 777 start.sh
+```
+- 启动脚本，然后随便访问几个程序的接口
+```
+./start.sh
+```
+- 进入Pinpoint Web界面查看
+![](http://images.intflag.com/pinpoint01-019.jpg)
