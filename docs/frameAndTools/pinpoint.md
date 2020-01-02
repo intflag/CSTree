@@ -24,5 +24,26 @@ Pinpoint 主要由 3 个组件外加 Hbase 数据库组成，三个组件分别�
 ### 参考资料
 - github：https://github.com/naver/pinpoint
 - 官方文档：https://naver.github.io/pinpoint/index.html
-- https://www.cnblogs.com/yyhh/p/6106472.html
-- https://www.jianshu.com/p/a8482f01af4a（推荐）
+- 博客：https://www.cnblogs.com/yyhh/p/6106472.html
+- 博客：https://www.jianshu.com/p/a8482f01af4a（推荐）
+### 下载源码
+- 进入github上的releases页面：https://github.com/naver/pinpoint/releases
+- 找到准备编译的版本，本次我们选择1.7.3，（注意：如果想直接部署，可以下载已经编译好的三个包：pinpoint-agent-1.7.3.tar.gz、pinpoint-collector-1.7.3.war、pinpoint-web-1.7.3.war直接部署即可，部署过程可以参考下一小节）
+![](http://images.intflag.com/pinpoint01-002.jpg)
+
+### 配置编译环境
+- 安装JDK6、7、8，然后配置环境变量，同时你的默认环境变量JAVA_HOME必须是JDK7以上的（注意：如果版本很新，也需要安装jdk9并配置环境变量）
+- 安装maven-3.6.3并配置环境变量，（注意：之前使用3.3.9编译时会报错，后更换3.6.3问题解决）
+![](http://images.intflag.com/pinpoint01-003.jpg)
+
+### 编译Pinpoint-1.7.3源码
+- 将下载的源码解压到非中文目录下，然后进入windows命令行窗口
+![](http://images.intflag.com/pinpoint01-004.jpg)
+- 执行命令：`mvn install -Dmaven.test.skip=true`进行编译
+![](http://images.intflag.com/pinpoint01-005.jpg)
+但是，在我本地却卡在了一个地方，如图
+![](http://images.intflag.com/pinpoint01-006.jpg)
+出现这个问题的原因是因为，maven要执行`npm install`去下载依赖，但是没有自动执行，所以需要我们手动执行一下这个命令，然后再执行一遍`mvn install -Dmaven.test.skip=true`进行编译，或者先去`web/target`目录下执行`npm install`命令，然后回到项目根目录执行编译。
+![](http://images.intflag.com/pinpoint01-007.jpg)
+- 当出现`BUILD SUCCESS`即表示编译成功，初次编译会下载很多依赖，时间特别长，至少需要30分钟。
+![](http://images.intflag.com/pinpoint01-008.jpg) 
