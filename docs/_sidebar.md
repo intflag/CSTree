@@ -19,6 +19,6 @@
 
     - [Java诊断利器-Arthas生产实战](frameAndTools/arthas.md)
 
-    - [APM监控工具-Pinpoint实战](frameAndTools/pinpoint.md)
+    - [APM监控工具-Pinpoint实践](frameAndTools/pinpoint.md)
 
     - [正则表达式](frameAndTools/regex.md)

@@ -194,7 +194,6 @@ Node<E> node(int index) {
 - `static final int UNTREEIFY_THRESHOLD = 6`：将红黑树转换回链表的阈值。
 - `static final int MIN_TREEIFY_CAPACITY = 64`：。
 
-### 成员变量
 ### 构造方法
 ### 核心方法
 

@@ -1,4 +1,4 @@
-# APM监控工具-Pinpoint实战
+# APM监控工具-Pinpoint实践
 ## Pinpoint技术架构
 > Pinpoint是一个开源的 APM (Application Performance Management/应用性能管理)工具，用于基于java的大规模分布式系统。在使用上力图简单高效，通过在启动时安装agent，不需要修改哪怕一行代码，最小化性能损失(3%)。
 <br><br>同时，Pinpoint也是一款全链路分析工具，提供了无侵入式的调用链监控、方法执行详情查看、应用状态信息监控等功能。基于GoogleDapper论文进行的实现，与另一款开源的全链路分析工具Zipkin类似，但相比Zipkin提供了无侵入式、代码维度的监控等更多的特性。 
@@ -118,7 +118,7 @@ TraceV2
 - 启动成功后，idea会自动打开Pinpoint的web界面。
 ![](http://images.intflag.com/pinpoint01-015.jpg) 
 
-## Centos7部署Pinpoint
+## Centos7单点方式部署Pinpoint
 ### 部署环境准备
 - jdk-1.8
 - hbase-1.5.0-bin.tar.gz
@@ -213,7 +213,11 @@ cp pinpoint-web-1.7.3.war pinpoint-collector-1.7.3.war ../module/apache-tomcat-8
 ```
 ![](http://images.intflag.com/pinpoint01-017.jpg)
 
-## 部署java程序接入Pinpoint监控
+## Centos7集群方式部署Pinpoint
+`TODO`
+- 可以参考：https://blog.csdn.net/huixueyi/article/details/81117155 或 https://blog.csdn.net/weixin_40592911/article/details/91041747
+
+## SpringBoot程序接入Pinpoint监控
 - 将Pinpoint-agent程序解压到准备监控的程序所在主机上
 ```
 tar -zxvf pinpoint-agent-1.7.3.tar.gz -C ../module/pinpoint-agent-1.7.3
@@ -232,3 +236,31 @@ chmod 777 start.sh
 ```
 - 进入Pinpoint Web界面查看
 ![](http://images.intflag.com/pinpoint01-019.jpg)
+
+## Tomcat程序接入Pinpoint监控
+- 将Pinpoint-agent程序部署到准备监控的程序所在的主机上
+- 修改`bin/catalina.sh`文件，在最上方（但要位于`#!/bin/sh`下）加入下面的配置
+```
+CATALINA_OPTS="$CATALINA_OPTS -javaagent:/opt/module/pinpoint-agent-1.7.3/pinpoint-bootstrap-1.7.3.jar"
+CATALINA_OPTS="$CATALINA_OPTS -Dpinpoint.agentId=pinpointWebTest"
+CATALINA_OPTS="$CATALINA_OPTS -Dpinpoint.applicationName=pinpointWebTest"
+```
+- 将要部署war包上传到`webapps`目录下
+- 在bin目录下执行`./start.sh`启动tomcat
+- 访问测试程序的接口，然后进入Pinpoint Web界面查看
+![](http://images.intflag.com/pinpoint01-020.jpg)
+
+## Pinpoint问题总结
+- 为什么Pinpoint-Web界面没有被监控的程序？
+    - 1、可能是启动参数写错了，重新检查一遍启动参数
+    - 2、Pinpoint客户端和服务端不在同一台服务器，那么需要指定服务端的主机地址，配置`pinpoint-agent根目录/pinpoint.config`文件中的`profiler.collector.ip`属性值即可。
+    ```
+    profiler.collector.ip=127.0.0.1
+    ```
+- 为什么访问了好多次接口，在Web界面上只显示1次？
+    - Pinpoint-Agent可以设置采样率，默认采样率是20次采集1次，也就是5%，配置`pinpoint-agent根目录/pinpoint.config`文件中的`profiler.sampling.rate`属性值即可控制采样率，当值为1时表示采样率为100%，即每次访问都会采集。
+    ```
+    # 1 out of n transactions will be sampled where n is the rate. (20: 5%)
+    profiler.sampling.rate=20
+    ```
+
