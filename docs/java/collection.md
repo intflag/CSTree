@@ -195,7 +195,72 @@ Node<E> node(int index) {
 - `static final int MIN_TREEIFY_CAPACITY = 64`：。
 
 ### 构造方法
+- `public HashMap()`：空参构造。
+- `public HashMap(int initialCapacity)`：通过一个指定的容量实例化。
+- `public HashMap(int initialCapacity, float loadFactor)`：通过一个指定的容量和负载因子实例化。
+- `public HashMap(Map<? extends K, ? extends V> m)`：通过一个map集合实例化，内部通过循环遍历将数据存储到新的map中。
 ### 核心方法
+- `static final int hash(Object key)`：计算key的哈希值。
+```java
+static final int hash(Object key) {
+    int h;
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+}
+```
+计算示意图：
+![](http://images.intflag.com/hashmap01-001.jpg) 
+<br>源码中没有直接采用经过`hashCode`方法处理的哈希码作为存储数组table的下标位置是为了解决计算出来的哈希码可能不在数组大小范围内，从而导致无法匹配存储位置问题（哈希码 &（数组长度-1）巧妙的解决）；
+<br><br>为什么在计算数组下标前，需对哈希码进行二次处理：扰动处理？主要是为了加大哈希码低位的随机性，使得分布更均匀，从而提高对应数组存储下标位置的随机性和均匀性，最终减少Hash冲突。
+<br><br>这个方法非常巧妙，它通过`h & (table.length -1)`来得到该对象的保存位，而HashMap底层数组的长度总是2的n次方，这是HashMap在速度上的优化。当length总是2的n次方时，`h& (length-1)`运算等价于`对length取模`，也就是`h%length`，但是`&比%具有更高的效率`。
+  
+- `public V put(K key, V value)`：新增键值对。
+```java
+public V put(K key, V value) {
+    return putVal(hash(key), key, value, false, true);
+}
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+                boolean evict) {
+    Node<K,V>[] tab; Node<K,V> p; int n, i;
+    if ((tab = table) == null || (n = tab.length) == 0)
+        n = (tab = resize()).length;
+    if ((p = tab[i = (n - 1) & hash]) == null)
+        tab[i] = newNode(hash, key, value, null);
+    else {
+        Node<K,V> e; K k;
+        if (p.hash == hash &&
+            ((k = p.key) == key || (key != null && key.equals(k))))
+            e = p;
+        else if (p instanceof TreeNode)
+            e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
+        else {
+            for (int binCount = 0; ; ++binCount) {
+                if ((e = p.next) == null) {
+                    p.next = newNode(hash, key, value, null);
+                    if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
+                        treeifyBin(tab, hash);
+                    break;
+                }
+                if (e.hash == hash &&
+                    ((k = e.key) == key || (key != null && key.equals(k))))
+                    break;
+                p = e;
+            }
+        }
+        if (e != null) { // existing mapping for key
+            V oldValue = e.value;
+            if (!onlyIfAbsent || oldValue == null)
+                e.value = value;
+            afterNodeAccess(e);
+            return oldValue;
+        }
+    }
+    ++modCount;
+    if (++size > threshold)
+        resize();
+    afterNodeInsertion(evict);
+    return null;
+}
+```
 
 ## TreeMap
 ### 继承体系图
