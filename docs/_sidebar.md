@@ -13,6 +13,8 @@
 
 - 数据结构与算法
 
+    - [LeetCode必刷清单](algorithm/leetCodeList.md)
+
 - 框架&工具
 
     - [Flume组件在生产环境的使用及问题](frameAndTools/flume.md)

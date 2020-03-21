@@ -13,3 +13,4 @@
 - [纯洁的微笑](http://www.ityouknow.com/)
 - [周立的博客](http://www.itmuch.com/)
 - [方志朋的博客](https://www.fangzhipeng.com/)
+- [CS-Notes](https://github.com/CyC2018/CS-Notes)
