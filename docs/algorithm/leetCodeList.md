@@ -65,13 +65,18 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
     <tr >
 	    <td rowspan="2">树</td>
 	    <td>[递归] 1. 树的高度</td>
-	    <td>104</td>
-	    <td>N</td>
+	    <td><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/description/" target="_blank" title="查看LeetCode题目">104</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr>
 	    <td>[递归] 2. 平衡树</td>
-	    <td>110</td>
-	    <td>N</td>
+	    <td><a href="https://leetcode-cn.com/problems/balanced-binary-tree/description/" target="_blank" title="查看LeetCode题目">110</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr>
+	    <td>[递归] 3. 两节点的最长路径</td>
+	    <td><a href="https://leetcode-cn.com/problems/diameter-of-binary-tree/description/" target="_blank" title="查看LeetCode题目">543</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
 	    <td rowspan="6">栈和队列</td>
