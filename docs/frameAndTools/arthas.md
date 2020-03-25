@@ -33,3 +33,31 @@ redefine -c 5674cd4d /tmp/UserController.class
 > 由于我的操作不便展示，所以采用了Arthas官方的demo，同时官方特别贴心的为我们搭建了线上练习环境，可以访问这个地址：https://alibaba.github.io/arthas/arthas-tutorials?language=cn
 <br><br>其实还有一种方案，可以先使用jad命令将目标类反编译到某个目录下，接着用vim修改，然后用mc命令在线编译，编译后使用redefine命令热更新，但是我在实际操作中遇到了编译失败的问题，所以就采用了第二种方案，
 <br><br>最后，一定要详细阅读官方的操作手册
+
+## 生产执行耗时分析
+> 背景：生产某程序在执行某个操作的时候，耗时30多分钟，测试环境无法复现，要求定位到具体的操作
+
+### 准备工作
+- 首先保证开发环境代码与生产一致
+- 提前安装阿里巴巴开源的Java诊断工具Arthas，如果生产环境不能访问公网可以采用离线全量安装方式。具体参考：https://alibaba.github.io/arthas/install-detail.html#id2
+
+### 耗时分析
+ - 启动Arthas工具
+ ```bash
+java -jar arthas-boot.jar
+```
+![](http://images.intflag.com/arthas02-001.jpg)
+
+- 启动成功后将会列出当前运行的所有java进程，`输入准备修改的程序编号`。
+![](http://images.intflag.com/arthas02-002.jpg)
+- 然后会进入到该程序的Arthas操作命令界面中，然后使用`trace`命令查询某个方法内部调用路径，并输出方法路径上的每个节点上耗时
+```
+trace -E com.test.ClassA|org.test.ClassB method1|method2|method3
+```
+![](http://images.intflag.com/arthas02-003.jpg)
+- 手动或者等待该方法执行，即可得到该方法的内部调用路径和方法路径上的每个节点上耗时
+![](http://images.intflag.com/arthas02-004.jpg)
+- 根据图片上的分析我们可以得知`initLog`方法耗费了大量的时间，然后我们就可以专门分析这个方法了
+- PS：后续我仔细的分析了这个方法，发现并不是程序逻辑问题导致时间长，是由于方法里面一个对数据库查询的操作导致的，但是单独在生产执行这个查询的SQL语句却非常快，最后经过和运维同事一起排查发现，是由于这个任务执行时数据库压力太大导致。 
+
+> 之前用过Arthas的代码热更新功能，非常好用，这次又用它来排查程序耗时过长的问题，所以Arthas还是很牛掰的，一些常用的操作最好能够掌握。
