@@ -63,20 +63,75 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/328.%E5%A5%87%E5%81%B6%E9%93%BE%E8%A1%A8.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
-	    <td rowspan="2">树</td>
+	    <td rowspan="14">树</td>
 	    <td>[递归] 1. 树的高度</td>
 	    <td><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/description/" target="_blank" title="查看LeetCode题目">104</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/104.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>[递归] 2. 平衡树</td>
 	    <td><a href="https://leetcode-cn.com/problems/balanced-binary-tree/description/" target="_blank" title="查看LeetCode题目">110</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/110.%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>[递归] 3. 两节点的最长路径</td>
 	    <td><a href="https://leetcode-cn.com/problems/diameter-of-binary-tree/description/" target="_blank" title="查看LeetCode题目">543</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/543.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84.java" target="_blank" title="查看解题代码">Y</a></td>
+	</tr>
+	<tr>
+	    <td>[递归] 4. 翻转树</td>
+	    <td><a href="https://leetcode-cn.com/problems/invert-binary-tree/description/" target="_blank" title="查看LeetCode题目">226</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/226.%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91.java" target="_blank" title="查看解题代码">Y</a></td>
+	</tr>
+	<tr>
+	    <td>[递归] 5. 归并两棵树</td>
+	    <td><a href="https://leetcode-cn.com/problems/merge-two-binary-trees/description/" target="_blank" title="查看LeetCode题目">617</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/617.%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91.java" target="_blank" title="查看解题代码">Y</a></td>
+	</tr>
+	<tr>
+	    <td>[递归] 6. 判断路径和是否等于一个数</td>
+	    <td><a href="https://leetcode-cn.com/problems/path-sum/description/" target="_blank" title="查看LeetCode题目">112</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/112.%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C.java" target="_blank" title="查看解题代码">Y</a></td>
+	</tr>
+	<tr>
+	    <td>[递归] 7. 统计路径和等于一个数的路径数量</td>
+	    <td><a href="https://leetcode-cn.com/problems/path-sum-iii/description/" target="_blank" title="查看LeetCode题目">437</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/437.%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C-iii.java" target="_blank" title="查看解题代码">Y</a></td>
+	</tr>
+	<tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
 	</tr>
 	<tr >
 	    <td rowspan="6">栈和队列</td>
