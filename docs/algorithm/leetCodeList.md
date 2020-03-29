@@ -121,42 +121,42 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	<tr>
 	    <td>[递归] 12. 相同节点值的最大路径长度</td>
 	    <td><a href="https://leetcode-cn.com/problems/longest-univalue-path/" target="_blank" title="查看LeetCode题目">687</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/687.%E6%9C%80%E9%95%BF%E5%90%8C%E5%80%BC%E8%B7%AF%E5%BE%84.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>[递归] 13. 间隔遍历</td>
 	    <td><a href="https://leetcode-cn.com/problems/house-robber-iii/description/" target="_blank" title="查看LeetCode题目">337</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/337.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D-iii.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>[递归] 14. 找出二叉树中第二小的节点</td>
 	    <td><a href="https://leetcode-cn.com/problems/second-minimum-node-in-a-binary-tree/description/" target="_blank" title="查看LeetCode题目">671</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/671.%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%AC%AC%E4%BA%8C%E5%B0%8F%E7%9A%84%E8%8A%82%E7%82%B9.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>[层次遍历] 1. 一棵树每层节点的平均数</td>
-	    <td></td>
-	    <td></td>
+	    <td><a href="https://leetcode-cn.com/problems/average-of-levels-in-binary-tree/description/" target="_blank" title="查看LeetCode题目">637</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/637.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%B9%B3%E5%9D%87%E5%80%BC.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>[层次遍历] 2. 得到左下角的节点</td>
-	    <td></td>
-	    <td></td>
+	    <td><a href="https://leetcode-cn.com/problems/find-bottom-left-tree-value/description/" target="_blank" title="查看LeetCode题目">513</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr>
 	    <td>[前中后序遍历] 1. 递归与非递归实现二叉树的前序遍历</td>
 	    <td><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/description/" target="_blank" title="查看LeetCode题目">144</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>[前中后序遍历] 2. 递归与非递归实现二叉树的后序遍历</td>
 	    <td><a href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/description/" target="_blank" title="查看LeetCode题目">145</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>[前中后序遍历] 3. 递归与非递归实现二叉树的中序遍历</td>
 	    <td><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/description/" target="_blank" title="查看LeetCode题目">94</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td rowspan="6">栈和队列</td>
