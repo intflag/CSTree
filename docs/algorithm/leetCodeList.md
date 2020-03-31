@@ -141,7 +141,7 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	<tr>
 	    <td>[层次遍历] 2. 得到左下角的节点</td>
 	    <td><a href="https://leetcode-cn.com/problems/find-bottom-left-tree-value/description/" target="_blank" title="查看LeetCode题目">513</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/513.%E6%89%BE%E6%A0%91%E5%B7%A6%E4%B8%8B%E8%A7%92%E7%9A%84%E5%80%BC.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>[前中后序遍历] 1. 递归与非递归实现二叉树的前序遍历</td>
@@ -161,32 +161,32 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	<tr >
 	    <td>[BST] 1. 修剪二叉查找树</td>
 	    <td><a href="https://leetcode-cn.com/problems/trim-a-binary-search-tree/description/" target="_blank" title="查看LeetCode题目">669</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/669.%E4%BF%AE%E5%89%AA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[BST] 2. 寻找二叉查找树的第 k 个元素</td>
+	    <td><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/description/" target="_blank" title="查看LeetCode题目">230</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[BST] 3. 把二叉查找树每个节点的值都加上比它大的节点的值</td>
+	    <td><a href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree/description/" target="_blank" title="查看LeetCode题目">538</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/538.%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[BST] 4. 二叉查找树的最近公共祖先</td>
+	    <td><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/" target="_blank" title="查看LeetCode题目">235</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[BST] 5. 二叉树的最近公共祖先</td>
+	    <td><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/description/" target="_blank" title="查看LeetCode题目">236</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/236.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[BST] 6. 从有序数组中构造二叉查找树</td>
+	    <td><a href="https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/description/" target="_blank" title="查看LeetCode题目">108</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td></td>
