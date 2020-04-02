@@ -194,14 +194,14 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td>Y</td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[BST] 8. 在二叉查找树中寻找两个节点，使它们的和为一个给定值</td>
+	    <td><a href="https://leetcode-cn.com/problems/two-sum-iv-input-is-a-bst/description/" target="_blank" title="查看LeetCode题目">653</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[BST] 9. 在二叉查找树中查找两个节点之差的最小绝对值</td>
+	    <td><a href="https://leetcode-cn.com/problems/minimum-absolute-difference-in-bst/description/" target="_blank" title="查看LeetCode题目">530</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
 	    <td></td>
