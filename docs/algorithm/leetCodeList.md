@@ -191,17 +191,17 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	<tr >
 	    <td>[BST] 7. 根据有序链表构造平衡的二叉查找树</td>
 	    <td><a href="https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/description/" target="_blank" title="查看LeetCode题目">109</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/109.%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[BST] 8. 在二叉查找树中寻找两个节点，使它们的和为一个给定值</td>
 	    <td><a href="https://leetcode-cn.com/problems/two-sum-iv-input-is-a-bst/description/" target="_blank" title="查看LeetCode题目">653</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/653.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-iv-%E8%BE%93%E5%85%A5-bst.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[BST] 9. 在二叉查找树中查找两个节点之差的最小绝对值</td>
 	    <td><a href="https://leetcode-cn.com/problems/minimum-absolute-difference-in-bst/description/" target="_blank" title="查看LeetCode题目">530</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/530.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td></td>
