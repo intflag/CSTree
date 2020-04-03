@@ -204,19 +204,19 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/530.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[BST] 10. 寻找二叉查找树中出现次数最多的值</td>
+	    <td><a href="https://leetcode-cn.com/problems/find-mode-in-binary-search-tree/description/" target="_blank" title="查看LeetCode题目">501</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[Trie] 1. 实现一个 Trie</td>
+	    <td><a href="https://leetcode-cn.com/problems/implement-trie-prefix-tree/description/" target="_blank" title="查看LeetCode题目">208</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>[Trie] 2. 实现一个 Trie，用来求前缀和</td>
+	    <td><a href="https://leetcode-cn.com/problems/map-sum-pairs/description/" target="_blank" title="查看LeetCode题目">677</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
 	    <td rowspan="6">栈和队列</td>
@@ -250,7 +250,7 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td>N</td>
 	</tr>
     <tr >
-	    <td rowspan="4">栈和队列</td>
+	    <td rowspan="4">哈希表</td>
 	    <td>1. 数组中两个数的和为给定值</td>
 	    <td><a href="https://leetcode-cn.com/problems/two-sum" target="_blank" title="查看LeetCode题目">1</a></td>
 	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/1.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.java" target="_blank" title="查看解题代码">Y</a></td>
@@ -530,5 +530,61 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td>[桶排序] 2. 按照字符出现次数对字符串排序</td>
 	    <td><a href="https://leetcode-cn.com/problems/sort-characters-by-frequency/description/" target="_blank" title="查看LeetCode题目">451</a></td>
 	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/451.%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E5%87%BA%E7%8E%B0%E9%A2%91%E7%8E%87%E6%8E%92%E5%BA%8F.java" target="_blank" title="查看解题代码">Y</a></td>
+	</tr>
+	<tr >
+	    <td rowspan="11">贪心思想</td>
+	    <td>1. 分配饼干</td>
+	    <td><a href="https://leetcode-cn.com/problems/assign-cookies/description/" target="_blank" title="查看LeetCode题目">455</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>2. 不重叠的区间个数</td>
+	    <td><a href="https://leetcode-cn.com/problems/non-overlapping-intervals/description/" target="_blank" title="查看LeetCode题目">435</a></td>
+	    <td>Y</td>
+	</tr>
+    <tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
 	</tr>
 </table>
