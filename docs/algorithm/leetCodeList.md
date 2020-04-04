@@ -535,54 +535,129 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td rowspan="11">贪心思想</td>
 	    <td>1. 分配饼干</td>
 	    <td><a href="https://leetcode-cn.com/problems/assign-cookies/description/" target="_blank" title="查看LeetCode题目">455</a></td>
-	    <td></td>
+	    <td>Y</td>
 	</tr>
     <tr >
 	    <td>2. 不重叠的区间个数</td>
 	    <td><a href="https://leetcode-cn.com/problems/non-overlapping-intervals/description/" target="_blank" title="查看LeetCode题目">435</a></td>
-	    <td>Y</td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
 	    <td></td>
 	</tr>
     <tr >
+	    <td>3. 投飞镖刺破气球</td>
+	    <td><a href="https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons/description/" target="_blank" title="查看LeetCode题目">452</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>4. 根据身高和序号重组队列</td>
+	    <td><a href="https://leetcode-cn.com/problems/queue-reconstruction-by-height/description/" target="_blank" title="查看LeetCode题目">406</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>5. 买卖股票最大的收益</td>
+	    <td><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/description/" target="_blank" title="查看LeetCode题目">121</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>6. 买卖股票的最大收益 II</td>
+	    <td><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/description/" target="_blank" title="查看LeetCode题目">122</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>7. 种植花朵</td>
+	    <td><a href="https://leetcode-cn.com/problems/can-place-flowers/description/" target="_blank" title="查看LeetCode题目">605</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>8. 判断是否为子序列</td>
+	    <td><a href="https://leetcode-cn.com/problems/is-subsequence/description/" target="_blank" title="查看LeetCode题目">392</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>9. 修改一个数成为非递减数组</td>
+	    <td><a href="https://leetcode-cn.com/problems/non-decreasing-array/description/" target="_blank" title="查看LeetCode题目">665</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>10. 子数组最大的和</td>
+	    <td><a href="https://leetcode-cn.com/problems/maximum-subarray/description/" target="_blank" title="查看LeetCode题目">53</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>11. 分隔字符串使同种字符出现在一起</td>
+	    <td><a href="https://leetcode-cn.com/problems/partition-labels/description/" target="_blank" title="查看LeetCode题目">763</a></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td rowspan="6">二分查找</td>
+	    <td>1. 求开方</td>
+	    <td><a href="https://leetcode-cn.com/problems/sqrtx/description/" target="_blank" title="查看LeetCode题目">69</a></td>
+	    <td></td>
+	</tr>
+	<tr >
 	    <td></td>
 	    <td></td>
 	    <td></td>
 	</tr>
-    <tr >
+	<tr >
 	    <td></td>
 	    <td></td>
 	    <td></td>
 	</tr>
-    <tr >
+	<tr >
 	    <td></td>
 	    <td></td>
 	    <td></td>
 	</tr>
-    <tr >
+	<tr >
 	    <td></td>
 	    <td></td>
 	    <td></td>
 	</tr>
-    <tr >
+	<tr >
 	    <td></td>
 	    <td></td>
 	    <td></td>
 	</tr>
-    <tr >
+	<tr >
+	    <td rowspan="2">分治思想</td>
 	    <td></td>
 	    <td></td>
 	    <td></td>
 	</tr>
-    <tr >
+	<tr >
 	    <td></td>
 	    <td></td>
 	    <td></td>
 	</tr>
-    <tr >
+	<tr >
+	    <td rowspan="2">搜索</td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td rowspan="2">动态规划</td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td rowspan="2">数学</td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr >
 	    <td></td>
 	    <td></td>
 	    <td></td>
