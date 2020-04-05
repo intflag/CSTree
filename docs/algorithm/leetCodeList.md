@@ -591,26 +591,26 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td rowspan="6">二分查找</td>
 	    <td>1. 求开方</td>
 	    <td><a href="https://leetcode-cn.com/problems/sqrtx/description/" target="_blank" title="查看LeetCode题目">69</a></td>
-	    <td></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>2. 大于给定元素的最小元素</td>
+	    <td><a href="https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target/description/" target="_blank" title="查看LeetCode题目">744</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>3. 有序数组的 Single Element</td>
+	    <td><a href="https://leetcode-cn.com/problems/single-element-in-a-sorted-array/description/" target="_blank" title="查看LeetCode题目">540</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>4. 第一个错误的版本</td>
+	    <td><a href="https://leetcode-cn.com/problems/first-bad-version/description/" target="_blank" title="查看LeetCode题目">278</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
+	    <td>5. 旋转数组的最小数字</td>
+	    <td><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/description/" target="_blank" title="查看LeetCode题目">153</a></td>
 	    <td></td>
 	</tr>
 	<tr >
