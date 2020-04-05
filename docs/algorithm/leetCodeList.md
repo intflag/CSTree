@@ -535,7 +535,7 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td rowspan="11">贪心思想</td>
 	    <td>1. 分配饼干</td>
 	    <td><a href="https://leetcode-cn.com/problems/assign-cookies/description/" target="_blank" title="查看LeetCode题目">455</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/455.%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>2. 不重叠的区间个数</td>
@@ -591,27 +591,27 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td rowspan="6">二分查找</td>
 	    <td>1. 求开方</td>
 	    <td><a href="https://leetcode-cn.com/problems/sqrtx/description/" target="_blank" title="查看LeetCode题目">69</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/69.x-%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>2. 大于给定元素的最小元素</td>
 	    <td><a href="https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target/description/" target="_blank" title="查看LeetCode题目">744</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/744.%E5%AF%BB%E6%89%BE%E6%AF%94%E7%9B%AE%E6%A0%87%E5%AD%97%E6%AF%8D%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%97%E6%AF%8D.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>3. 有序数组的 Single Element</td>
 	    <td><a href="https://leetcode-cn.com/problems/single-element-in-a-sorted-array/description/" target="_blank" title="查看LeetCode题目">540</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/540.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>4. 第一个错误的版本</td>
 	    <td><a href="https://leetcode-cn.com/problems/first-bad-version/description/" target="_blank" title="查看LeetCode题目">278</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/278.%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%99%E8%AF%AF%E7%9A%84%E7%89%88%E6%9C%AC.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>5. 旋转数组的最小数字</td>
 	    <td><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/description/" target="_blank" title="查看LeetCode题目">153</a></td>
-	    <td></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/153.%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td></td>
