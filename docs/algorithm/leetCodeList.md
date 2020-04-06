@@ -614,19 +614,19 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/153.%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>6. 查找区间</td>
+	    <td><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" title="查看LeetCode题目">34</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
 	    <td rowspan="2">分治思想</td>
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>1. 给表达式加括号</td>
+	    <td><a href="https://leetcode-cn.com/problems/different-ways-to-add-parentheses/description/" target="_blank" title="查看LeetCode题目">241</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
-	    <td></td>
-	    <td></td>
+	    <td>2. 不同的二叉搜索树</td>
+	    <td><a href="https://leetcode-cn.com/problems/unique-binary-search-trees-ii/description/" target="_blank" title="查看LeetCode题目">95</a></td>
 	    <td></td>
 	</tr>
 	<tr >
