@@ -627,7 +627,7 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	<tr >
 	    <td>2. 不同的二叉搜索树</td>
 	    <td><a href="https://leetcode-cn.com/problems/unique-binary-search-trees-ii/description/" target="_blank" title="查看LeetCode题目">95</a></td>
-	    <td></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
 	    <td rowspan="2">搜索</td>
@@ -641,15 +641,40 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td></td>
 	</tr>
 	<tr >
-	    <td rowspan="2">动态规划</td>
-	    <td></td>
+	    <td rowspan="7">动态规划</td>
+	    <td>[斐波那契数列] 1. 爬楼梯</td>
+	    <td><a href="https://leetcode-cn.com/problems/climbing-stairs/description/" target="_blank" title="查看LeetCode题目">70</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[斐波那契数列] 2. 强盗抢劫</td>
+	    <td><a href="https://leetcode-cn.com/problems/house-robber/description/" target="_blank" title="查看LeetCode题目">198</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[斐波那契数列] 3. 强盗在环形街区抢劫</td>
+	    <td><a href="https://leetcode-cn.com/problems/house-robber-ii/description/" target="_blank" title="查看LeetCode题目">213</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[斐波那契数列] 4. 信件错排</td>
 	    <td></td>
 	    <td></td>
 	</tr>
 	<tr >
+	    <td>[斐波那契数列] 5. 母牛生产</td>
 	    <td></td>
 	    <td></td>
-	    <td></td>
+	</tr>
+	<tr >
+	    <td>[矩阵路径] 1. 矩阵的最小路径和</td>
+	    <td><a href="https://leetcode-cn.com/problems/minimum-path-sum/description/" target="_blank" title="查看LeetCode题目">64</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[矩阵路径] 2. 矩阵的总路径数</td>
+	    <td><a href="https://leetcode-cn.com/problems/unique-paths/description/" target="_blank" title="查看LeetCode题目">62</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
 	    <td rowspan="2">数学</td>
