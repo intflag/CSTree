@@ -641,7 +641,7 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td></td>
 	</tr>
 	<tr >
-	    <td rowspan="7">动态规划</td>
+	    <td rowspan="13">动态规划</td>
 	    <td>[斐波那契数列] 1. 爬楼梯</td>
 	    <td><a href="https://leetcode-cn.com/problems/climbing-stairs/description/" target="_blank" title="查看LeetCode题目">70</a></td>
 	    <td>Y</td>
@@ -675,6 +675,36 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td>[矩阵路径] 2. 矩阵的总路径数</td>
 	    <td><a href="https://leetcode-cn.com/problems/unique-paths/description/" target="_blank" title="查看LeetCode题目">62</a></td>
 	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[数组区间] 1. 数组区间和</td>
+	    <td><a href="https://leetcode-cn.com/problems/range-sum-query-immutable/description/" target="_blank" title="查看LeetCode题目">303</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[数组区间] 2. 数组中等差递增子区间的个数</td>
+	    <td><a href="https://leetcode-cn.com/problems/arithmetic-slices/description/" target="_blank" title="查看LeetCode题目">413</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[分割整数] 1. 分割整数的最大乘积</td>
+	    <td><a href="https://leetcode-cn.com/problems/integer-break/description/" target="_blank" title="查看LeetCode题目">343</a></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td></td>
+	    <td></td>
+	    <td></td>
 	</tr>
 	<tr >
 	    <td rowspan="2">数学</td>
