@@ -616,18 +616,18 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	<tr >
 	    <td>6. 查找区间</td>
 	    <td><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" title="查看LeetCode题目">34</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/34.%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td rowspan="2">分治思想</td>
 	    <td>1. 给表达式加括号</td>
 	    <td><a href="https://leetcode-cn.com/problems/different-ways-to-add-parentheses/description/" target="_blank" title="查看LeetCode题目">241</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/241.%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>2. 不同的二叉搜索树</td>
 	    <td><a href="https://leetcode-cn.com/problems/unique-binary-search-trees-ii/description/" target="_blank" title="查看LeetCode题目">95</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/95.%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-ii.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td rowspan="2">搜索</td>
@@ -644,17 +644,17 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td rowspan="13">动态规划</td>
 	    <td>[斐波那契数列] 1. 爬楼梯</td>
 	    <td><a href="https://leetcode-cn.com/problems/climbing-stairs/description/" target="_blank" title="查看LeetCode题目">70</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/70.%E7%88%AC%E6%A5%BC%E6%A2%AF.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[斐波那契数列] 2. 强盗抢劫</td>
 	    <td><a href="https://leetcode-cn.com/problems/house-robber/description/" target="_blank" title="查看LeetCode题目">198</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/198.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[斐波那契数列] 3. 强盗在环形街区抢劫</td>
 	    <td><a href="https://leetcode-cn.com/problems/house-robber-ii/description/" target="_blank" title="查看LeetCode题目">213</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/213.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D-ii.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[斐波那契数列] 4. 信件错排</td>
@@ -669,22 +669,22 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	<tr >
 	    <td>[矩阵路径] 1. 矩阵的最小路径和</td>
 	    <td><a href="https://leetcode-cn.com/problems/minimum-path-sum/description/" target="_blank" title="查看LeetCode题目">64</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/64.%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[矩阵路径] 2. 矩阵的总路径数</td>
 	    <td><a href="https://leetcode-cn.com/problems/unique-paths/description/" target="_blank" title="查看LeetCode题目">62</a></td>
-	    <td>Y</td>
+	    <td></td>
 	</tr>
 	<tr >
 	    <td>[数组区间] 1. 数组区间和</td>
 	    <td><a href="https://leetcode-cn.com/problems/range-sum-query-immutable/description/" target="_blank" title="查看LeetCode题目">303</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/303.%E5%8C%BA%E5%9F%9F%E5%92%8C%E6%A3%80%E7%B4%A2-%E6%95%B0%E7%BB%84%E4%B8%8D%E5%8F%AF%E5%8F%98.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[数组区间] 2. 数组中等差递增子区间的个数</td>
 	    <td><a href="https://leetcode-cn.com/problems/arithmetic-slices/description/" target="_blank" title="查看LeetCode题目">413</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/413.%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[分割整数] 1. 分割整数的最大乘积</td>
