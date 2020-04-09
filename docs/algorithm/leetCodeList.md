@@ -707,10 +707,45 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td></td>
 	</tr>
 	<tr >
-	    <td rowspan="2">数学</td>
+	    <td rowspan="9">数学</td>
+	    <td>[最大公约数最小公倍数] 1. 生成素数序列</td>
+	    <td><a href="https://leetcode-cn.com/problems/count-primes/description/" target="_blank" title="查看LeetCode题目">204</a></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td>[最大公约数最小公倍数] 2. 最大公约数</td>
 	    <td></td>
 	    <td></td>
+	</tr>
+	<tr >
+	    <td>[最大公约数最小公倍数] 3. 使用位操作和减法求解最大公约数</td>
 	    <td></td>
+	    <td></td>
+	</tr>
+	<tr >
+	    <td>[进制转换] 1. 7 进制</td>
+	    <td><a href="https://leetcode-cn.com/problems/base-7/description/" target="_blank" title="查看LeetCode题目">504</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[进制转换] 2. 16 进制</td>
+	    <td><a href="https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/description/" target="_blank" title="查看LeetCode题目">405</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[进制转换] 3. 26 进制</td>
+	    <td><a href="168" target="_blank" title="查看LeetCode题目">168</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[字符串加法减法] 1. 二进制加法</td>
+	    <td><a href="https://leetcode-cn.com/problems/add-binary/description/" target="_blank" title="查看LeetCode题目">67</a></td>
+	    <td>Y</td>
+	</tr>
+	<tr >
+	    <td>[字符串加法减法] 2. 字符串加法</td>
+	    <td><a href="https://leetcode-cn.com/problems/add-strings/description/" target="_blank" title="查看LeetCode题目">415</a></td>
+	    <td>Y</td>
 	</tr>
 	<tr >
 	    <td></td>
