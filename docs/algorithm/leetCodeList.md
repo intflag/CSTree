@@ -400,68 +400,68 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	</tr>
     <tr >
 	    <td rowspan="13">位运算</td>
+	    <td>1. 统计两个数的二进制表示有多少位不同</td>
+	    <td><a href="https://leetcode-cn.com/problems/hamming-distance/" target="_blank" title="查看LeetCode题目">461</a></td>
+	    <td>Y</td>
+	</tr>
+    <tr >
+	    <td>2. 数组中唯一一个不重复的元素</td>
+	    <td><a href="https://leetcode-cn.com/problems/single-number/description/" target="_blank" title="查看LeetCode题目">136</a></td>
+	    <td>Y</td>
+	</tr>
+    <tr >
+	    <td>3. 找出数组中缺失的那个数</td>
+	    <td><a href="https://leetcode-cn.com/problems/missing-number/description/" target="_blank" title="查看LeetCode题目">268</a></td>
+	    <td>Y</td>
+	</tr>
+    <tr >
+	    <td>4. 数组中不重复的两个元素</td>
+	    <td><a href="https://leetcode-cn.com/problems/single-number-iii/description/" target="_blank" title="查看LeetCode题目">260</a></td>
 	    <td></td>
+	</tr>
+    <tr >
+	    <td>5. 翻转一个数的比特位</td>
+	    <td><a href="https://leetcode-cn.com/problems/reverse-bits/description/" target="_blank" title="查看LeetCode题目">190</a></td>
+	    <td></td>
+	</tr>
+    <tr >
+	    <td>6. 不用额外变量交换两个整数</td>
 	    <td></td>
 	    <td></td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
+	    <td>7. 判断一个数是不是 2 的 n 次方</td>
+	    <td><a href="https://leetcode-cn.com/problems/power-of-two/description/" target="_blank" title="查看LeetCode题目">231</a></td>
+	    <td>Y</td>
+	</tr>
+    <tr >
+	    <td>8. 判断一个数是不是 4 的 n 次方</td>
+	    <td><a href="https://leetcode-cn.com/problems/power-of-four/" target="_blank" title="查看LeetCode题目">342</a></td>
+	    <td>Y</td>
+	</tr>
+    <tr >
+	    <td>9. 判断一个数的位级表示是否不会出现连续的 0 和 1</td>
+	    <td><a href="https://leetcode-cn.com/problems/binary-number-with-alternating-bits/description/" target="_blank" title="查看LeetCode题目">693</a></td>
+	    <td>Y</td>
+	</tr>
+    <tr >
+	    <td>10. 求一个数的补码</td>
+	    <td><a href="https://leetcode-cn.com/problems/number-complement/description/" target="_blank" title="查看LeetCode题目">476</a></td>
 	    <td></td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
+	    <td>11. 实现整数的加法</td>
+	    <td><a href="https://leetcode-cn.com/problems/sum-of-two-integers/description/" target="_blank" title="查看LeetCode题目">371</a></td>
 	    <td></td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
+	    <td>12. 字符串数组最大乘积</td>
+	    <td><a href="https://leetcode-cn.com/problems/maximum-product-of-word-lengths/description/" target="_blank" title="查看LeetCode题目">318</a></td>
 	    <td></td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
+	    <td>13. 统计从 0 ~ n 每个数的二进制表示中 1 的个数</td>
+	    <td><a href="https://leetcode-cn.com/problems/counting-bits/description/" target="_blank" title="查看LeetCode题目">338</a></td>
 	    <td></td>
 	</tr>
 </table>
