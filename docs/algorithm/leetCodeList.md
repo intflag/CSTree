@@ -318,29 +318,29 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	</tr>
     <tr >
 	    <td rowspan="12">数组与矩阵</td>
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>1. 把数组中的 0 移到末尾</td>
+	    <td><a href="https://leetcode-cn.com/problems/move-zeroes/description/" target="_blank" title="查看LeetCode题目">283</a></td>
+	    <td>Y</td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>2. 改变矩阵维度</td>
+	    <td><a href="2. 改变矩阵维度" target="_blank" title="查看LeetCode题目">566</a></td>
+	    <td>Y</td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>3. 找出数组中最长的连续 1</td>
+	    <td><a href="https://leetcode-cn.com/problems/max-consecutive-ones/description/" target="_blank" title="查看LeetCode题目">485</a></td>
+	    <td>Y</td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>4. 有序矩阵查找</td>
+	    <td><a href="https://leetcode-cn.com/problems/search-a-2d-matrix-ii/description/" target="_blank" title="查看LeetCode题目">240</a></td>
+	    <td>Y</td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
+	    <td>5. 有序矩阵的 Kth Element</td>
+	    <td><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/description/" target="_blank" title="查看LeetCode题目">378</a></td>
+	    <td>Y</td>
 	</tr>
     <tr >
 	    <td></td>
