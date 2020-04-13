@@ -343,38 +343,38 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td>Y</td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
+	    <td>6. 一个数组元素在 [1, n] 之间，其中一个数被替换为另一个数，找出重复的数和丢失的数</td>
+	    <td><a href="https://leetcode-cn.com/problems/set-mismatch/description/" target="_blank" title="查看LeetCode题目">645</a></td>
+	    <td>Y</td>
+	</tr>
+    <tr >
+	    <td>7. 找出数组中重复的数，数组值在 [1, n] 之间</td>
+	    <td><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/description/" target="_blank" title="查看LeetCode题目">287</a></td>
+	    <td>Y</td>
+	</tr>
+    <tr >
+	    <td>8. 数组相邻差值的个数</td>
+	    <td><a href="https://leetcode-cn.com/problems/beautiful-arrangement-ii/description/" target="_blank" title="查看LeetCode题目">667</a></td>
 	    <td></td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
+	    <td>9. 数组的度</td>
+	    <td><a href="https://leetcode-cn.com/problems/degree-of-an-array/description/" target="_blank" title="查看LeetCode题目">697</a></td>
 	    <td></td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-    <tr >
-	    <td></td>
-	    <td></td>
+	    <td>10. 对角元素相等的矩阵</td>
+	    <td><a href="https://leetcode-cn.com/problems/toeplitz-matrix/description/" target="_blank" title="查看LeetCode题目">766</a></td>
 	    <td></td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
+	    <td>11. 嵌套数组</td>
+	    <td><a href="https://leetcode-cn.com/problems/array-nesting/description/" target="_blank" title="查看LeetCode题目">565</a></td>
 	    <td></td>
 	</tr>
     <tr >
-	    <td></td>
-	    <td></td>
+	    <td>12. 分隔数组</td>
+	    <td><a href="https://leetcode-cn.com/problems/max-chunks-to-make-sorted/description/" target="_blank" title="查看LeetCode题目">769</a></td>
 	    <td></td>
 	</tr>
     <tr >
