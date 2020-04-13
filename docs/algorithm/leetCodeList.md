@@ -320,37 +320,37 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td rowspan="12">数组与矩阵</td>
 	    <td>1. 把数组中的 0 移到末尾</td>
 	    <td><a href="https://leetcode-cn.com/problems/move-zeroes/description/" target="_blank" title="查看LeetCode题目">283</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/283.%E7%A7%BB%E5%8A%A8%E9%9B%B6.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>2. 改变矩阵维度</td>
 	    <td><a href="2. 改变矩阵维度" target="_blank" title="查看LeetCode题目">566</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/566.%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>3. 找出数组中最长的连续 1</td>
 	    <td><a href="https://leetcode-cn.com/problems/max-consecutive-ones/description/" target="_blank" title="查看LeetCode题目">485</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/485.%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD-1-%E7%9A%84%E4%B8%AA%E6%95%B0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>4. 有序矩阵查找</td>
 	    <td><a href="https://leetcode-cn.com/problems/search-a-2d-matrix-ii/description/" target="_blank" title="查看LeetCode题目">240</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/240.%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5-ii.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>5. 有序矩阵的 Kth Element</td>
 	    <td><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/description/" target="_blank" title="查看LeetCode题目">378</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/378.%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>6. 一个数组元素在 [1, n] 之间，其中一个数被替换为另一个数，找出重复的数和丢失的数</td>
 	    <td><a href="https://leetcode-cn.com/problems/set-mismatch/description/" target="_blank" title="查看LeetCode题目">645</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/645.%E9%94%99%E8%AF%AF%E7%9A%84%E9%9B%86%E5%90%88.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>7. 找出数组中重复的数，数组值在 [1, n] 之间</td>
 	    <td><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/description/" target="_blank" title="查看LeetCode题目">287</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/287.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>8. 数组相邻差值的个数</td>
@@ -402,17 +402,17 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td rowspan="13">位运算</td>
 	    <td>1. 统计两个数的二进制表示有多少位不同</td>
 	    <td><a href="https://leetcode-cn.com/problems/hamming-distance/" target="_blank" title="查看LeetCode题目">461</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/461.%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>2. 数组中唯一一个不重复的元素</td>
 	    <td><a href="https://leetcode-cn.com/problems/single-number/description/" target="_blank" title="查看LeetCode题目">136</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/136.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>3. 找出数组中缺失的那个数</td>
 	    <td><a href="https://leetcode-cn.com/problems/missing-number/description/" target="_blank" title="查看LeetCode题目">268</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/268.%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>4. 数组中不重复的两个元素</td>
@@ -432,17 +432,17 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
     <tr >
 	    <td>7. 判断一个数是不是 2 的 n 次方</td>
 	    <td><a href="https://leetcode-cn.com/problems/power-of-two/description/" target="_blank" title="查看LeetCode题目">231</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/231.2-%E7%9A%84%E5%B9%82.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>8. 判断一个数是不是 4 的 n 次方</td>
 	    <td><a href="https://leetcode-cn.com/problems/power-of-four/" target="_blank" title="查看LeetCode题目">342</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/342.4-%E7%9A%84%E5%B9%82.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>9. 判断一个数的位级表示是否不会出现连续的 0 和 1</td>
 	    <td><a href="https://leetcode-cn.com/problems/binary-number-with-alternating-bits/description/" target="_blank" title="查看LeetCode题目">693</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/693.%E4%BA%A4%E6%9B%BF%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
     <tr >
 	    <td>10. 求一个数的补码</td>
@@ -725,27 +725,27 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	<tr >
 	    <td>[进制转换] 1. 7 进制</td>
 	    <td><a href="https://leetcode-cn.com/problems/base-7/description/" target="_blank" title="查看LeetCode题目">504</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/504.%E4%B8%83%E8%BF%9B%E5%88%B6%E6%95%B0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[进制转换] 2. 16 进制</td>
 	    <td><a href="https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/description/" target="_blank" title="查看LeetCode题目">405</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/405.%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E6%95%B0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[进制转换] 3. 26 进制</td>
 	    <td><a href="168" target="_blank" title="查看LeetCode题目">168</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/168.excel%E8%A1%A8%E5%88%97%E5%90%8D%E7%A7%B0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[字符串加法减法] 1. 二进制加法</td>
 	    <td><a href="https://leetcode-cn.com/problems/add-binary/description/" target="_blank" title="查看LeetCode题目">67</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/67.%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td>[字符串加法减法] 2. 字符串加法</td>
 	    <td><a href="https://leetcode-cn.com/problems/add-strings/description/" target="_blank" title="查看LeetCode题目">415</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr >
 	    <td></td>
