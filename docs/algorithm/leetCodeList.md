@@ -19,37 +19,37 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	</tr>
 	<tr>
 	    <td>2. 链表反转</td>
-	    <td>206</td>
+	    <td><a href="https://leetcode-cn.com/problems/reverse-linked-list" target="_blank" title="查看LeetCode题目">206</a></td>
 	    <td>Y</td>
 	</tr>
 	<tr>
 	    <td>3. 归并两个有序的链表</td>
-	    <td>21</td>
+	    <td><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/description/" target="_blank" title="查看LeetCode题目">21</a></td>
 	    <td>Y</td>
 	</tr>
 	<tr>
 	    <td>4. 从有序链表中删除重复节点</td>
-	    <td>21</td>
+	    <td><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/description/" target="_blank" title="查看LeetCode题目">83</a></td>
 	    <td>Y</td>
 	</tr>
 	<tr>
 	    <td>5. 删除链表的倒数第 n 个节点</td>
-	    <td>19</td>
+	    <td><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/description/" target="_blank" title="查看LeetCode题目">19</a></td>
 	    <td>Y</td>
 	</tr>
 	<tr>
 	    <td>6. 交换链表中的相邻结点</td>
-	    <td>24</td>
+	    <td><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/description/" target="_blank" title="查看LeetCode题目">24</a></td>
 	    <td>Y</td>
 	</tr>
 	<tr>
 	    <td>7. 链表求和</td>
-	    <td>445</td>
+	    <td><a href="https://leetcode-cn.com/problems/add-two-numbers-ii/description/" target="_blank" title="查看LeetCode题目">445</a></td>
 	    <td>Y</td>
 	</tr>
 	<tr>
 	    <td>8. 回文链表</td>
-	    <td>234</td>
+	    <td><a href="https://leetcode-cn.com/problems/palindrome-linked-list/description/" target="_blank" title="查看LeetCode题目">234</a></td>
 	    <td>Y</td>
 	</tr>
 	<tr>
