@@ -1,6 +1,6 @@
 - Java
 
-    - [笔试易错知识点](java/written.md)
+    - [基础](java/basics.md)
     - [集合](java/collection.md)
 
 - Linux
