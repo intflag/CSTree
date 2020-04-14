@@ -15,42 +15,42 @@ PS：点击题目编号即可跳转到LeetCode中该题的位置，点击语言�
 	    <td rowspan="10">链表</td>
 	    <td>1. 找出两个链表的交点</td>
 	    <td><a href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists/" target="_blank" title="查看LeetCode题目">160</a></td>
-	    <td><a href="" target="_blank" title="查看解题代码">Y</a></td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/160.%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>2. 链表反转</td>
 	    <td><a href="https://leetcode-cn.com/problems/reverse-linked-list" target="_blank" title="查看LeetCode题目">206</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/206.%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>3. 归并两个有序的链表</td>
 	    <td><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/description/" target="_blank" title="查看LeetCode题目">21</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>4. 从有序链表中删除重复节点</td>
 	    <td><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/description/" target="_blank" title="查看LeetCode题目">83</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/83.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>5. 删除链表的倒数第 n 个节点</td>
 	    <td><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/description/" target="_blank" title="查看LeetCode题目">19</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/19.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E8%8A%82%E7%82%B9.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>6. 交换链表中的相邻结点</td>
 	    <td><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/description/" target="_blank" title="查看LeetCode题目">24</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/24.%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>7. 链表求和</td>
 	    <td><a href="https://leetcode-cn.com/problems/add-two-numbers-ii/description/" target="_blank" title="查看LeetCode题目">445</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/445.%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0-ii.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>8. 回文链表</td>
 	    <td><a href="https://leetcode-cn.com/problems/palindrome-linked-list/description/" target="_blank" title="查看LeetCode题目">234</a></td>
-	    <td>Y</td>
+	    <td><a href="https://github.com/intflag/LeetCodeAC/blob/master/java/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8.java" target="_blank" title="查看解题代码">Y</a></td>
 	</tr>
 	<tr>
 	    <td>9. 分隔链表</td>
