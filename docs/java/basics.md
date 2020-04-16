@@ -673,3 +673,156 @@ CloneConstructorExample e2 = new CloneConstructorExample(e1);
 e1.set(2, 222);
 System.out.println(e2.get(2)); // 2
 ```
+## 反射
+### 类加载概述和加载时机
+1、类加载概述
+
+当程序在第一次使用某个类的时候，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。
+
+Ⅰ加载：就是将 class 文件动态加载到JVM中，并为之创建一个 class 对象。任何类被使用时系统都会建立一个class对象。
+
+Ⅱ 连接：
+- 验证：是否有正确的内部结构，并且与其他类协调一致。
+- 准备：负责为类的静态成员分配内存，并设置默认初始化值。
+- 解析：将类的二进制数据中的符号引用替换为直接引用。
+
+Ⅲ 初始化：参考下面说明。
+```
+Student s = new Student();
+
+1、Student.class加载进内存
+
+2、声明一个Student类型引用s
+
+3、在堆内存创建对象
+
+4、给对象中属性默认初始化值
+
+5、属性进行显示初始化
+
+6、构造方法进栈，对对象中的属性赋值，构造方法弹栈
+
+7、将对象的地址值赋值给s
+```
+
+### 反射概述
+1、什么是反射
+
+JAVA反射机制是在运行状态中，对任意一个类，都能知道这个类的所有属性和方法；对任意一个对象，都能调用它的任意一个方法和属性；这种动态获取信息的方法以及动态调用对象的方法和功能称为JAVA语言的反射机制。
+
+2、实现反射的三种方式
+- Object类的getClass()方法，判断两个对象是否是同一个字节码文件。
+- 静态属性class，锁对象。
+- Class类中的静态方法forName()，读取配置文件。
+
+```
+public class Person {
+
+    public String name;     //故意设置为public
+    private Integer age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Person() {
+    }
+
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    public void watch() {
+        System.out.println("watch...");
+    }
+
+    public void speak(String content) {
+        System.out.println("speak: " + content);
+    }
+}
+```
+```
+public class ReflectTest {
+
+    public static void main(String[] args) throws ClassNotFoundException {
+        Class clazz1 = new Person().getClass();
+        Class clazz2 = Person.class;
+        Class clazz3 = Class.forName("com.intflag.bean.Person");
+
+        System.out.println(clazz1 == clazz2);   //true
+        System.out.println(clazz2 == clazz3);   //true
+    }
+}
+```
+3、反射进阶操作
+
+`java.lang.Class` 和 `java.lang.reflect` 一起对反射提供了支持，`java.lang.reflect` 类库主要包含了以下三个类：
+
+- Field ：可以使用 `get()` 和 `set()` 方法读取和修改 Field 对象关联的字段；
+- Method ：可以使用 `invoke()` 方法调用与 Method 对象关联的方法；
+- Constructor ：可以用 Constructor 的 `newInstance()` 创建新的对象。
+
+> 以下示例为了减少篇幅，不捕获异常，采用抛出的方式
+
+Ⅰ 通过反射获取带参构造方法并使用
+```
+@Test
+public void constructorTest() throws Exception {
+    Class clazz = Class.forName("com.intflag.bean.Person");
+    Constructor constructor = clazz.getConstructor(String.class, Integer.class);
+    Object obj = constructor.newInstance("tom", 18);
+    if (obj instanceof Person) {
+        Person person = (Person) obj;
+        System.out.println(person);     //Person{name='tom', age=18}
+    }
+}
+```
+Ⅱ 通过反射获取成员变量并使用
+```
+@Test
+public void fieldTest() throws Exception {
+    Class clazz = Class.forName("com.intflag.bean.Person");
+    Constructor constructor = clazz.getConstructor(String.class, Integer.class);
+    Person person = (Person) constructor.newInstance("tom", 18);
+    System.out.println(person);     //Person{name='tom', age=18}
+
+    Field name = clazz.getField("name");
+    name.set(person, "jerry");
+    System.out.println(person);     //Person{name='jerry', age=18}
+
+    //Field age = clazz.getField("age");              //执行报错：java.lang.NoSuchFieldException: age 因为getField方法只能获取公有属性
+    Field age = clazz.getDeclaredField("age");       //暴力反射获取字段
+    age.setAccessible(true);        //去除age属性的私有权限，否则将报错：java.lang.IllegalAccessException: Class basics.ReflectTest can not access a member of class com.intflag.bean.Person with modifiers "private"
+    age.set(person, 20);            //Person{name='jerry', age=20}
+    System.out.println(person);
+}
+```
+Ⅲ 通过反射获取成员方法并使用
+```
+@Test
+public void methodTest() throws Exception {
+    Class clazz = Class.forName("com.intflag.bean.Person");
+    Constructor constructor = clazz.getConstructor(String.class, Integer.class);
+    Person person = (Person) constructor.newInstance("tom", 18);
+    System.out.println(person);                 //Person{name='tom', age=18}
+
+    Method watch = clazz.getMethod("watch");    //获取无参watch方法
+    watch.invoke(person);                       //watch...
+
+    Method speak = clazz.getMethod("speak", String.class);  //获取有参speak方法
+    speak.invoke(person, "I Love You");                     //speak: I Love You
+}
+```
