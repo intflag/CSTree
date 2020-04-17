@@ -826,3 +826,29 @@ public void methodTest() throws Exception {
     speak.invoke(person, "I Love You");                     //speak: I Love You
 }
 ```
+## 异常
+### 概述
+> 引用自：[cyc2018](https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%9F%BA%E7%A1%80?id=%e5%85%ab%e3%80%81%e5%bc%82%e5%b8%b8)
+
+Throwable 可以用来表示任何可以作为异常抛出的类，分为两种： Error 和 Exception。其中 Error 用来表示 JVM 无法处理的错误，Exception 分为两种：
+
+- 受检异常（编译时异常） ：需要用 try...catch... 语句捕获并进行处理，并且可以从异常中恢复；
+- 非受检异常（运行时异常） ：是程序运行时错误，例如除 0 会引发 Arithmetic Exception，此时程序崩溃并且无法恢复。
+
+![](http://images.intflag.com/exception01.png)
+
+[Java 入门之异常处理](https://www.tianmaying.com/tutorial/Java-Exception)
+
+[Java 异常的面试问题及答案 -Part 1](http://www.importnew.com/7383.html)
+
+### 异常处理及捕获
+1、异常处理
+
+- try…catch
+- try…catch…finally
+- try…finally
+
+
+2、异常捕获
+- throws：用在`方法申明后`面，跟的是`异常类名`，可以`抛出多个`异常，用逗号分割。
+- throw：用在`方法体内`，跟的是`异常对象名`，只能`抛出一个`异常。
