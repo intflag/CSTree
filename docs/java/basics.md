@@ -188,7 +188,7 @@ digraph demo{
 ```
 
 ## String
-> 引用自：[cyc2018](https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%9F%BA%E7%A1%80?id=%e4%ba%8c%e3%80%81string)
+> 摘录自：[cyc2018](https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%9F%BA%E7%A1%80?id=%e4%ba%8c%e3%80%81string)
 ### 概述
 
 String 被声明为 `final`，因此它不可被继承。(Integer 等包装类也不能被继承）
@@ -332,7 +332,7 @@ public String(String original) {
 ```
 
 ## Object 通用方法
-> 引用自：[cyc2018](https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%9F%BA%E7%A1%80?id=%e4%ba%94%e3%80%81object-%e9%80%9a%e7%94%a8%e6%96%b9%e6%b3%95)
+> 摘录自：[cyc2018](https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%9F%BA%E7%A1%80?id=%e4%ba%94%e3%80%81object-%e9%80%9a%e7%94%a8%e6%96%b9%e6%b3%95)
 
 ### 概述
 所有类都直接或者间接的继承自该类
@@ -826,9 +826,26 @@ public void methodTest() throws Exception {
     speak.invoke(person, "I Love You");                     //speak: I Love You
 }
 ```
+
+Ⅳ 通过反射越过泛型检查
+```
+@Test
+public void genericsTest() throws Exception {
+    List<Integer> list = new ArrayList<>();
+    list.add(100);
+    System.out.println(list);       //[100]
+
+    Class clazz = Class.forName("java.util.ArrayList");
+    Method method = clazz.getMethod("add", Object.class);
+    method.invoke(list, "test");
+    System.out.println(list);       //[100, test]
+}
+```
+
+
 ## 异常
 ### 概述
-> 引用自：[cyc2018](https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%9F%BA%E7%A1%80?id=%e5%85%ab%e3%80%81%e5%bc%82%e5%b8%b8)
+> 摘录自：[cyc2018](https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%9F%BA%E7%A1%80?id=%e5%85%ab%e3%80%81%e5%bc%82%e5%b8%b8)
 
 Throwable 可以用来表示任何可以作为异常抛出的类，分为两种： Error 和 Exception。其中 Error 用来表示 JVM 无法处理的错误，Exception 分为两种：
 
@@ -852,3 +869,72 @@ Throwable 可以用来表示任何可以作为异常抛出的类，分为两种�
 2、异常捕获
 - throws：用在`方法申明后`面，跟的是`异常类名`，可以`抛出多个`异常，用逗号分割。
 - throw：用在`方法体内`，跟的是`异常对象名`，只能`抛出一个`异常。
+
+## 泛型
+```
+public class Generics <T> {
+
+    private T value;
+
+    public T getValue() {
+        return value;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+}
+```
+
+[Yuicon-Java基础-泛型详解](https://juejin.im/post/5b61545151882569fd2886bd)
+
+[10 道 Java 泛型面试题](https://cloud.tencent.com/developer/article/1033693)
+
+## 注解
+Java 注解是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。注解不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
+
+[注解 Annotation 实现原理与自定义注解例子](https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html)
+
+## 特性
+> 摘录自：[cyc2018](https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%9F%BA%E7%A1%80?id=%e5%8d%81%e4%b8%80%e3%80%81%e7%89%b9%e6%80%a7)
+
+### Java 各版本的新特性
+New highlights in Java SE 8
+
+- Lambda Expressions
+- Pipelines and Streams
+- Date and Time API
+- Default Methods
+- Type Annotations
+- Nashhorn JavaScript Engine
+- Concurrent Accumulators
+- Parallel operations
+- PermGen Error Removed
+
+New highlights in Java SE 7
+
+- Strings in Switch Statement
+- Type Inference for Generic Instance Creation
+- Multiple Exception Handling
+- Support for Dynamic Languages
+- Try with Resources
+- Java nio Package
+- Binary Literals, Underscore in literals
+- Diamond Syntax
+- [Difference between Java 1.8 and Java 1.7?](http://www.selfgrowth.com/articles/difference-between-java-18-and-java-17)
+- [Java 8 特性](http://www.importnew.com/19345.html)
+
+### Java 与 C++ 的区别
+- Java 是纯粹的面向对象语言，所有的对象都继承自 java.lang.Object，C++ 为了兼容 C 即支持面向对象也支持面向过程。
+- Java 通过虚拟机从而实现跨平台特性，但是 C++ 依赖于特定的平台。
+- Java 没有指针，它的引用可以理解为安全指针，而 C++ 具有和 C 一样的指针。
+- Java 支持自动垃圾回收，而 C++ 需要手动回收。
+- Java 不支持多重继承，只能通过实现多个接口来达到相同目的，而 C++ 支持多重继承。
+- Java 不支持操作符重载，虽然可以对两个 String 对象执行加法运算，但是这是语言内置支持的操作，不属于操作符重载，而 C++ 可以。
+- Java 的 goto 是保留字，但是不可用，C++ 可以使用 goto。
+
+[What are the main differences between Java and C++?](http://cs-fundamentals.com/tech-interview/java/differences-between-java-and-cpp.php)
+
+### JRE or JDK
+- JRE is the JVM program, Java application need to run on JRE.（翻译：JRE是JVM程序，Java应用程序需要在JRE上运行。）
+- JDK is a superset of JRE, JRE + tools for developing java programs. e.g, it provides the compiler "javac"（翻译：JDK是JRE、JRE+工具的超集，用于开发JAVA程序。例如，它提供的编译器javac）
