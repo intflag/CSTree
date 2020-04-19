@@ -255,3 +255,29 @@ CopyOnWriteArrayList 在写操作的同时允许读操作，大大提高了读�
 - 数据不一致：读操作不能读取实时性的数据，因为部分写操作的数据还未同步到读数组中。
 
 所以 CopyOnWriteArrayList 不适合内存敏感以及对实时性要求很高的场景。
+
+## LinkedList
+1、概览
+
+基于双向链表实现，使用 Node 存储链表节点信息。
+
+```
+private static class Node<E> {
+    E item;
+    Node<E> next;
+    Node<E> prev;
+}
+```
+每个链表存储了 first 和 last 指针：
+```
+transient Node<E> first;
+transient Node<E> last;
+```
+![](http://images.intflag.com/container04.png)
+
+### 2、与 ArrayList 的比较
+ArrayList 基于动态数组实现，LinkedList 基于双向链表实现。ArrayList 和 LinkedList 的区别可以归结为数组和链表的区别：
+
+- 数组支持随机访问，但插入删除的代价很高，需要移动大量元素；
+
+- 链表不支持随机访问，但插入删除只需要改变指针。
