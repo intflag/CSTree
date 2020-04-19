@@ -1,7 +1,7 @@
 - Java
 
     - [基础](java/basics.md)
-    - [集合框架](java/collection.md)
+    - [集合框架](java/comtainer.md)
 
 - Linux
 
