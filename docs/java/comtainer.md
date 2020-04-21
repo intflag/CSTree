@@ -736,3 +736,10 @@ JDK 1.8 使用了 CAS 操作来支持更高的并发度，在 CAS 操作失败�
 
 并且 JDK 1.8 的实现也在链表过长时会转换为红黑树。
 
+## LinkedHashMap
+### 1、存储结构
+继承自 HashMap，因此具有和 HashMap 一样的快速查找特性。
+```
+public class LinkedHashMap<K,V> extends HashMap<K,V> implements Map<K,V>
+```
+内部维护了一个双向链表，用来维护插入顺序或者 LRU 顺序。
