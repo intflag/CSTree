@@ -1,7 +1,8 @@
 - Java
 
-    - [基础](java/basics.md)
-    - [容器](java/comtainer.md)
+    - [Java 基础](java/basics.md)
+    - [Java 容器](java/comtainer.md)
+    - [Java 并发](java/concurrent.md)
 
 - Linux
 
