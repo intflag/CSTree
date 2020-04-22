@@ -845,6 +845,7 @@ public static void main(String[] args) {
 ```
 [3, 1, 4]
 ```
+
 ## WeakHashMap
 ### 1、存储结构
 WeakHashMap 的 Entry 继承自 WeakReference，被 WeakReference 关联的对象在下一次垃圾回收时会被回收。
@@ -896,6 +897,7 @@ public final class ConcurrentCache<K, V> {
     }
 }
 ```
+
 ## 参考资料
 - Eckel B. Java 编程思想 [M]. 机械工业出版社, 2002.
 - [Java Collection Framework](https://www.w3resource.com/java-tutorial/java-collections.php)

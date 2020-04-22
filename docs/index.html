@@ -8,6 +8,7 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <!-- <link rel="stylesheet" href="https://unpkg.com/docsify-toc@1.0.0/dist/toc.css"> -->
   <!-- 将自定义样式放在 Github 上会导致加载速度变得非常慢，所以采取直接内嵌的方式 -->
   <style type="text/css">
     	
@@ -456,7 +457,12 @@
             return this.origin.code.apply(this, arguments);
           }
         }
-      }
+      },
+      toc: {
+        scope: '.markdown-section',
+        headings: 'h2, h3, h4, h5, h6',
+        title: '详细目录',
+      },
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
@@ -466,5 +472,6 @@
   <script src="//unpkg.com/docsify-copy-code"></script>
   <script src="//unpkg.com/docsify/lib/plugins/ga.js"></script>
   <script src="https://cdn.bootcss.com/viz.js/1.8.0/viz.js"></script>
+  <!-- <script src="https://unpkg.com/docsify-toc@1.0.0/dist/toc.js"></script> -->
 </body>
 </html>
