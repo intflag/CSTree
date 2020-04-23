@@ -1,7 +1,7 @@
 - Java
 
     - [基础](java/basics.md)
-    - [容器技术](java/comtainer.md)
+    - [容器](java/comtainer.md)
 
 - Linux
 
