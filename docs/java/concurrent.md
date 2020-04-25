@@ -13,6 +13,9 @@
 - 进程使用的内存地址可以上锁，即一个线程使用某些共享内存时，其他线程必须等它结束，才能使用这一块内存。（比如火车上的洗手间）－"互斥锁"
 - 进程使用的内存地址可以限定使用量（比如火车上的餐厅，最多只允许多少人进入，如果满了需要在门口等，等有人出来了才能进去）－“信号量”
 
+### 参考：
+- [biaodianfu](https://www.zhihu.com/question/25532384/answer/411179772)
+
 ## 线程的生命周期
 线程是一个动态执行的过程，它也有一个从产生到死亡的过程。
 ![](http://images.intflag.com/concurrent02.jpg)
@@ -35,6 +38,9 @@
 
 ### 5、死亡状态
 个运行状态的线程完成任务或者其他终止条件发生时，该线程就切换到终止状态。
+
+### 参考：
+- [Java 多线程编程](https://www.runoob.com/java/java-multithreading.html)
 
 ## 多线程的使用
 实现多线程有三种方式：
@@ -180,7 +186,7 @@ Executors 是一个工具类，类似于 Collections。 提供工厂方法来创
 
 ![](http://images.intflag.com/executor03.png)
 
-参考：
+### 参考：
 - [漫谈JAVA之Executor框架(1)](https://www.jianshu.com/p/e2053d455ef3)
 - [Difference between a Thread and an Executor in Java](https://javarevisited.blogspot.com/2016/12/difference-between-thread-and-executor.html)
 
@@ -451,10 +457,12 @@ Thread Name: Thread-0, i = 939166599
 ```
 运行会发现，i 累加到某个值，while 循环就停止了。
 ### 7、interrupted()
-### 8、stop()
-### 9、destroy()
+interrupted() 函数是 Thread 静态方法，用来检测当前线程的 interrupt 状态，检测完成后，状态清空。通过下面的 interrupted 源码我们能够知道，此方法首先调用 isInterrupted 方法，而 isInterrupted 方法是一个重载的 native 方法 private native boolean isInterrupted(boolean ClearInterrupted) 通过方法的注释能够知道，用来测试线程是否已经中断，参数用来决定是否重置中断标志。
 
-## 参考
+### 8、stop()
+stop 方法已经是一个废弃的方法，它是一个不安全的方法。因为调用 stop 方法会直接终止 run 方法的调用，并且会抛出一个 ThreadDeath 错误，如果线程持有某个对象锁的话，会完全释放锁，导致对象状态不一致。所以 stop 方法基本是不会被用到的。
+### 9、destroy()
+destroy 方法也是废弃的方法。基本不会被使用到。
+
+### 参考：
 - [java.lang.Thread类详解](https://www.cnblogs.com/albertrui/p/8391447.html)
-- [biaodianfu](https://www.zhihu.com/question/25532384/answer/411179772)
-- [Java 多线程编程](https://www.runoob.com/java/java-multithreading.html)
