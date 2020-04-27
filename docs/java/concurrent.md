@@ -134,60 +134,6 @@ Thread ID: 13, Thread Name: Thread-0, Hello MyThread
 - Java 是单继承，采用实现 Runnable、Callable 接口的方式后还可以继承其他类，而继承了 Thread 类后无法再继承其他类。
 - 如果要访问当前线程，采用实现 Runnable、Callable 接口的方式只能使用 `Thread.currentThread()` 得到当前线程，而继承 Thread 后直接使用 `this` 关键字即可得到当前线程。
 
-## Executor框架
-### 1、概述
-从 JDK5 开始，把工作单元与执行机制分离开来，工作单元包括 Runnable 和 Callable，而执行机制由 Executor 框架提供。`java.util.concurrent.Executor`，`java.util.concurrent.ExecutorService`，`java.util.concurrent.Executors` 这三者均是 JAVA Executor 框架的一部分，用来提供线程池的功能。因为创建于销毁线程消耗太多计算机资源，而且操作系统通常对线程数有限制，所以建议使用线程池来管理线程和并发执行任务，这样不用每次请求过来时就创建一个线程。从线程池免去创建销毁线程的资源(包括时间)损耗，利用这点提高了应用的响应处理速度，还可避免 "java.lang.OutOfMemoryError:unable to create new native thread" 之类的错误。
-
-### 2、Executor框架的两级调度模型
-HotSpot VM 的线程模型中，Java线程 (java.lang.Thread) 被一对一的映射为本地操作系统的线程。Java 线程的启动与销毁都与本地线程同步。操作系统会调度所有线程并将它们分配给可用的 CPU。
-
-在上层，Java使用多线程的程序，通常会将应用分解为若干任务，然后使用用户级别的调度器 (Executor框架) 将这些任务映射为对应数量的线程；
-
-底层，操作系统会将这些线程映射到硬件处理器上，下层硬件的调度并不受应用程序的控制。
-
-![](http://images.intflag.com/executor01.png)
-
-### 3、Executor
-Executor 是一个抽象层接口
-```java
-public interface Executor {
-
-    /**
-     * Executes the given command at some time in the future.  The command
-     * may execute in a new thread, in a pooled thread, or in the calling
-     * thread, at the discretion of the {@code Executor} implementation.
-     *
-     * @param command the runnable task
-     * @throws RejectedExecutionException if this task cannot be
-     * accepted for execution
-     * @throws NullPointerException if command is null
-     */
-    void execute(Runnable command);
-}
-```
-
-Executor VS Thread
-
-- Executor 是接口，Thread 是类。
-- Executor 本质上是对并行计算的抽象，允许并发代码以可管理的方式运行，也就是说 Executor 任务与执行解耦；而 Thread 是一种具体的并行运行代码的方式，任务和执行都是紧密耦合的。
-- Executor 可以执行任意数量的任务，而 Thread 只能执行一个任务。
-- Executor 框架负责创建和启动线程，而 Thread 由开发者负责创建和启动线程。
-
-### 4、ExecutorService
-ExecutorService 接口是 Executor 接口的子接口，增加了一些常见的对线程的控制方法，如提供提交线程任务，返回 Future 对象，终止、关闭线程池等方法。当调用 shutdown 方法时，线程池会停止接受新任务，但会完成正在 pending 中的任务。
-
-Future 对象提供了异步执行，意味着无需等待任务执行完成，提交需要执行的任务后，它立即返回继续往下执行 ，然后在需要时检查 Future 是否有结果了，如果任务已执行完毕，通过 Future.get() 方法获取执行结果，因为 Future.get() 是阻塞方法，如果考虑可能会因不明原因而导致 Future.get() 方法阻塞下去，Future 还提供了设置获取超时方法 Future.get(long timeout, TimeUnit unit)。
-
-![](http://images.intflag.com/executor02.png)
-
-### 5、Executors
-Executors 是一个工具类，类似于 Collections。 提供工厂方法来创建不同类型的线程池，例如 FixedThreadPool 或者 CacheThreadPool。
-
-![](http://images.intflag.com/executor03.png)
-
-### 参考：
-- [漫谈JAVA之Executor框架(1)](https://www.jianshu.com/p/e2053d455ef3)
-- [Difference between a Thread and an Executor in Java](https://javarevisited.blogspot.com/2016/12/difference-between-thread-and-executor.html)
 
 ## Thread 类详解
 ### 1、start()
@@ -465,3 +411,336 @@ destroy 方法也是废弃的方法。基本不会被使用到。
 
 ### 参考：
 - [java.lang.Thread类详解](https://www.cnblogs.com/albertrui/p/8391447.html)
+
+## Executor框架
+### 1、概述
+从 JDK5 开始，把工作单元与执行机制分离开来，工作单元包括 Runnable 和 Callable，而执行机制由 Executor 框架提供。`java.util.concurrent.Executor`，`java.util.concurrent.ExecutorService`，`java.util.concurrent.Executors` 这三者均是 JAVA Executor 框架的一部分，用来提供线程池的功能。因为创建于销毁线程消耗太多计算机资源，而且操作系统通常对线程数有限制，所以建议使用线程池来管理线程和并发执行任务，这样不用每次请求过来时就创建一个线程。从线程池免去创建销毁线程的资源(包括时间)损耗，利用这点提高了应用的响应处理速度，还可避免 "java.lang.OutOfMemoryError:unable to create new native thread" 之类的错误。
+
+### 2、Executor框架的两级调度模型
+HotSpot VM 的线程模型中，Java线程 (java.lang.Thread) 被一对一的映射为本地操作系统的线程。Java 线程的启动与销毁都与本地线程同步。操作系统会调度所有线程并将它们分配给可用的 CPU。
+
+在上层，Java使用多线程的程序，通常会将应用分解为若干任务，然后使用用户级别的调度器 (Executor框架) 将这些任务映射为对应数量的线程；
+
+底层，操作系统会将这些线程映射到硬件处理器上，下层硬件的调度并不受应用程序的控制。
+
+![](http://images.intflag.com/executor01.png)
+
+### 3、Executor
+Executor 是一个抽象层接口
+```java
+public interface Executor {
+
+    /**
+     * Executes the given command at some time in the future.  The command
+     * may execute in a new thread, in a pooled thread, or in the calling
+     * thread, at the discretion of the {@code Executor} implementation.
+     *
+     * @param command the runnable task
+     * @throws RejectedExecutionException if this task cannot be
+     * accepted for execution
+     * @throws NullPointerException if command is null
+     */
+    void execute(Runnable command);
+}
+```
+
+Executor VS Thread
+
+- Executor 是接口，Thread 是类。
+- Executor 本质上是对并行计算的抽象，允许并发代码以可管理的方式运行，也就是说 Executor 任务与执行解耦；而 Thread 是一种具体的并行运行代码的方式，任务和执行都是紧密耦合的。
+- Executor 可以执行任意数量的任务，而 Thread 只能执行一个任务。
+- Executor 框架负责创建和启动线程，而 Thread 由开发者负责创建和启动线程。
+
+### 4、ExecutorService
+ExecutorService 接口是 Executor 接口的子接口，增加了一些常见的对线程的控制方法，如提供提交线程任务，返回 Future 对象，终止、关闭线程池等方法。当调用 shutdown 方法时，线程池会停止接受新任务，但会完成正在 pending 中的任务。
+
+Future 对象提供了异步执行，意味着无需等待任务执行完成，提交需要执行的任务后，它立即返回继续往下执行 ，然后在需要时检查 Future 是否有结果了，如果任务已执行完毕，通过 Future.get() 方法获取执行结果，因为 Future.get() 是阻塞方法，如果考虑可能会因不明原因而导致 Future.get() 方法阻塞下去，Future 还提供了设置获取超时方法 Future.get(long timeout, TimeUnit unit)。
+
+![](http://images.intflag.com/executor02.png)
+
+### 5、Executors
+Executors 是一个工具类，类似于 Collections。 提供工厂方法来创建不同类型的线程池，例如 FixedThreadPool 或者 CacheThreadPool。
+
+![](http://images.intflag.com/executor03.png)
+
+### 6、Executor 的中断操作
+调用 Executor 的 shutdown() 方法会等待线程都执行完毕之后再关闭，但是如果调用的是 shutdownNow() 方法，则相当于调用每个线程的 interrupt() 方法。
+
+以下使用 Lambda 创建线程，相当于创建了一个匿名内部线程。
+
+```java
+public static void main(String[] args) {
+    ExecutorService executorService = Executors.newCachedThreadPool();
+    executorService.execute(() -> {
+        try {
+            Thread.sleep(2000);
+            System.out.println("Thread run");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    });
+    executorService.shutdownNow();
+    System.out.println("Main run");
+}
+```
+```java
+Main run
+java.lang.InterruptedException: sleep interrupted
+    at java.lang.Thread.sleep(Native Method)
+    at ExecutorInterruptExample.lambda$main$0(ExecutorInterruptExample.java:9)
+    at ExecutorInterruptExample$$Lambda$1/1160460865.run(Unknown Source)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+    at java.lang.Thread.run(Thread.java:745)
+```
+如果只想中断 Executor 中的一个线程，可以通过使用 submit() 方法来提交一个线程，它会返回一个 Future<?> 对象，通过调用该对象的 cancel(true) 方法就可以中断线程。
+
+```java
+Future<?> future = executorService.submit(() -> {
+    // ..
+});
+future.cancel(true);
+```
+
+### 参考：
+- [漫谈JAVA之Executor框架(1)](https://www.jianshu.com/p/e2053d455ef3)
+- [Difference between a Thread and an Executor in Java](https://javarevisited.blogspot.com/2016/12/difference-between-thread-and-executor.html)
+
+## 互斥同步
+Java 提供了两种锁机制来控制多个线程对共享资源的互斥访问，第一个是 JVM 实现的 synchronized，而另一个是 JDK 实现的 ReentrantLock。
+
+### 1、synchronized
+**Ⅰ 同步代码块**
+```java
+public void fun() {
+    synchronized (this) {
+        // ...
+    }
+}
+```
+它只作用于同一个对象，如果调用两个对象上的同步代码块，就不会进行同步。
+
+对于以下代码，使用 ExecutorService 执行了两个线程，由于调用的是同一个对象的同步代码块，因此这两个线程会进行同步，当一个线程进入同步语句块时，另一个线程就必须等待。
+
+```java
+public class SynchronizedTest {
+
+    public void fun1() {
+        synchronized (this) {
+            for (int i = 0; i < 10; i++) {
+                System.out.println("Thread Name: " + Thread.currentThread().getName() + ", i = " + i);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        SynchronizedTest sync1 = new SynchronizedTest();
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        executorService.execute(() -> sync1.fun1());
+        executorService.execute(() -> sync1.fun1());
+    }
+}
+```
+```
+Thread Name: pool-1-thread-1, i = 0
+Thread Name: pool-1-thread-1, i = 1
+Thread Name: pool-1-thread-1, i = 2
+Thread Name: pool-1-thread-1, i = 3
+Thread Name: pool-1-thread-1, i = 4
+Thread Name: pool-1-thread-1, i = 5
+Thread Name: pool-1-thread-1, i = 6
+Thread Name: pool-1-thread-1, i = 7
+Thread Name: pool-1-thread-1, i = 8
+Thread Name: pool-1-thread-1, i = 9
+Thread Name: pool-1-thread-2, i = 0
+Thread Name: pool-1-thread-2, i = 1
+Thread Name: pool-1-thread-2, i = 2
+Thread Name: pool-1-thread-2, i = 3
+Thread Name: pool-1-thread-2, i = 4
+Thread Name: pool-1-thread-2, i = 5
+Thread Name: pool-1-thread-2, i = 6
+Thread Name: pool-1-thread-2, i = 7
+Thread Name: pool-1-thread-2, i = 8
+Thread Name: pool-1-thread-2, i = 9
+```
+对于以下代码，两个线程调用了不同对象的同步代码块，因此这两个线程就不需要同步。从输出结果可以看出，两个线程交叉执行。
+```java
+public static void main(String[] args) {
+    SynchronizedTest sync1 = new SynchronizedTest();
+    SynchronizedTest sync2 = new SynchronizedTest();
+    ExecutorService executorService = Executors.newCachedThreadPool();
+    executorService.execute(() -> sync1.fun1());
+    executorService.execute(() -> sync2.fun1());
+}
+```
+```
+Thread Name: pool-1-thread-1, i = 0
+Thread Name: pool-1-thread-1, i = 1
+Thread Name: pool-1-thread-1, i = 2
+Thread Name: pool-1-thread-1, i = 3
+Thread Name: pool-1-thread-1, i = 4
+Thread Name: pool-1-thread-1, i = 5
+Thread Name: pool-1-thread-2, i = 0
+Thread Name: pool-1-thread-1, i = 6
+Thread Name: pool-1-thread-2, i = 1
+Thread Name: pool-1-thread-1, i = 7
+Thread Name: pool-1-thread-2, i = 2
+Thread Name: pool-1-thread-1, i = 8
+Thread Name: pool-1-thread-1, i = 9
+Thread Name: pool-1-thread-2, i = 3
+Thread Name: pool-1-thread-2, i = 4
+Thread Name: pool-1-thread-2, i = 5
+Thread Name: pool-1-thread-2, i = 6
+Thread Name: pool-1-thread-2, i = 7
+Thread Name: pool-1-thread-2, i = 8
+Thread Name: pool-1-thread-2, i = 9
+```
+
+**Ⅱ 同步方法**
+```java
+public synchronized void fun () {
+    // ...
+}
+```
+它和同步代码块一样，作用于同一个对象。
+
+**Ⅲ 同步类**
+```java
+public void fun() {
+    synchronized (SynchronizedTest.class) {
+        // ...
+    }
+}
+```
+作用于整个类，也就是说两个线程调用同一个类的不同对象上的这种同步语句，也会进行同步。
+```java
+public class SynchronizedExample {
+
+    public void func2() {
+        synchronized (SynchronizedExample.class) {
+            for (int i = 0; i < 10; i++) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
+```
+```java
+public static void main(String[] args) {
+    SynchronizedTest sync1 = new SynchronizedTest();
+    SynchronizedTest sync2 = new SynchronizedTest();
+    ExecutorService executorService = Executors.newCachedThreadPool();
+    executorService.execute(() -> sync1.fun2());
+    executorService.execute(() -> sync2.fun2());
+}
+```
+```
+Thread Name: pool-1-thread-1, i = 0
+Thread Name: pool-1-thread-1, i = 1
+Thread Name: pool-1-thread-1, i = 2
+Thread Name: pool-1-thread-1, i = 3
+Thread Name: pool-1-thread-1, i = 4
+Thread Name: pool-1-thread-1, i = 5
+Thread Name: pool-1-thread-1, i = 6
+Thread Name: pool-1-thread-1, i = 7
+Thread Name: pool-1-thread-1, i = 8
+Thread Name: pool-1-thread-1, i = 9
+Thread Name: pool-1-thread-2, i = 0
+Thread Name: pool-1-thread-2, i = 1
+Thread Name: pool-1-thread-2, i = 2
+Thread Name: pool-1-thread-2, i = 3
+Thread Name: pool-1-thread-2, i = 4
+Thread Name: pool-1-thread-2, i = 5
+Thread Name: pool-1-thread-2, i = 6
+Thread Name: pool-1-thread-2, i = 7
+Thread Name: pool-1-thread-2, i = 8
+Thread Name: pool-1-thread-2, i = 9
+```
+**Ⅳ 同步静态方法**
+```java
+public synchronized static void fun() {
+    // ...
+}
+```
+作用于整个类。
+
+### 2、ReentrantLock
+ReentrantLock 是 java.util.concurrent（J.U.C）包中的锁。
+
+```java
+public class ReentrantLockTest {
+
+    private ReentrantLock lock = new ReentrantLock();
+
+    public void fun1() {
+        lock.lock();
+        try {
+            for (int i = 0; i < 10; i++) {
+                System.out.println("Thread Name: " + Thread.currentThread().getName() + ", i = " + i);
+            }
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public static void main(String[] args) {
+        ReentrantLockTest sync1 = new ReentrantLockTest();
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        executorService.execute(()->sync1.fun1());
+        executorService.execute(()->sync1.fun1());
+    }
+}
+```
+```
+Thread Name: pool-1-thread-1, i = 0
+Thread Name: pool-1-thread-1, i = 1
+Thread Name: pool-1-thread-1, i = 2
+Thread Name: pool-1-thread-1, i = 3
+Thread Name: pool-1-thread-1, i = 4
+Thread Name: pool-1-thread-1, i = 5
+Thread Name: pool-1-thread-1, i = 6
+Thread Name: pool-1-thread-1, i = 7
+Thread Name: pool-1-thread-1, i = 8
+Thread Name: pool-1-thread-1, i = 9
+Thread Name: pool-1-thread-2, i = 0
+Thread Name: pool-1-thread-2, i = 1
+Thread Name: pool-1-thread-2, i = 2
+Thread Name: pool-1-thread-2, i = 3
+Thread Name: pool-1-thread-2, i = 4
+Thread Name: pool-1-thread-2, i = 5
+Thread Name: pool-1-thread-2, i = 6
+Thread Name: pool-1-thread-2, i = 7
+Thread Name: pool-1-thread-2, i = 8
+Thread Name: pool-1-thread-2, i = 9
+```
+
+### 3、synchronized 与 ReentrantLock 比较
+**Ⅰ 锁的实现**
+
+synchronized 是 JVM 实现的，ReentrantLock 是 JDK 实现的。
+
+**Ⅱ 性能**
+
+新版本 Java 对 synchronized 进行了很多优化，例如自旋锁等，synchronized 与 ReentrantLock 大致相同。
+
+**Ⅲ 等待可中断**
+
+当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理其他事情。
+
+ReentrantLock 可中断，而 synchronized 不行。
+
+**Ⅳ 公平锁**
+
+公平锁是指多个线程在等待同一个锁时，必须按照申请锁的时间顺序来依次获得锁。
+
+synchronized 中的锁是非公平的，ReentrantLock 默认情况下也是非公平的，但是也可以是公平的。
+
+**Ⅴ 锁绑定多个条件**
+
+一个 ReentrantLock 可以同时绑定多个 Condition 对象。
+
+### 4、使用选择
+除非需要使用 ReentrantLock 的高级功能，否则优先使用 synchronized。这是因为 synchronized 是 JVM 实现的一种锁机制，JVM 原生地支持它，而 ReentrantLock 不是所有的 JDK 版本都支持。并且使用 synchronized 不用担心没有释放锁而导致死锁问题，因为 JVM 会确保锁的释放。
+
+
+
