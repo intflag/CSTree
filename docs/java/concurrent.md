@@ -12,7 +12,7 @@
 - 进程使用的内存地址可以上锁，即一个线程使用某些共享内存时，其他线程必须等它结束，才能使用这一块内存。（比如火车上的洗手间）－"互斥锁"
 - 进程使用的内存地址可以限定使用量（比如火车上的餐厅，最多只允许多少人进入，如果满了需要在门口等，等有人出来了才能进去）－“信号量”
 
-### 参考：
+### 参考
 - [biaodianfu](https://www.zhihu.com/question/25532384/answer/411179772)
 
 ## 线程的生命周期
@@ -38,7 +38,7 @@
 ### 5、死亡状态
 个运行状态的线程完成任务或者其他终止条件发生时，该线程就切换到终止状态。
 
-### 参考：
+### 参考
 - [Java 多线程编程](https://www.runoob.com/java/java-multithreading.html)
 
 ## 多线程的使用
@@ -409,7 +409,7 @@ stop 方法已经是一个废弃的方法，它是一个不安全的方法。因
 ### 9、destroy()
 destroy 方法也是废弃的方法。基本不会被使用到。
 
-### 参考：
+### 参考
 - [java.lang.Thread类详解](https://www.cnblogs.com/albertrui/p/8391447.html)
 
 ## Executor框架
@@ -502,7 +502,7 @@ Future<?> future = executorService.submit(() -> {
 future.cancel(true);
 ```
 
-### 参考：
+### 参考
 - [漫谈JAVA之Executor框架(1)](https://www.jianshu.com/p/e2053d455ef3)
 - [Difference between a Thread and an Executor in Java](https://javarevisited.blogspot.com/2016/12/difference-between-thread-and-executor.html)
 
@@ -742,5 +742,387 @@ synchronized 中的锁是非公平的，ReentrantLock 默认情况下也是非�
 ### 4、使用选择
 除非需要使用 ReentrantLock 的高级功能，否则优先使用 synchronized。这是因为 synchronized 是 JVM 实现的一种锁机制，JVM 原生地支持它，而 ReentrantLock 不是所有的 JDK 版本都支持。并且使用 synchronized 不用担心没有释放锁而导致死锁问题，因为 JVM 会确保锁的释放。
 
+## 线程之间的协作
+当多个线程可以一起工作去解决某个问题时，如果某些部分必须在其它部分之前完成，那么就需要对线程进行协调。
 
+### 1、join
+在线程中调用另一个线程的 join() 方法，会将当前线程挂起，知道目标线程结束，该方法是 Thread 类的方法。
 
+### 2、wait() notify() notifyAll()
+调用 wait() 使线程等待某个条件满足，线程在等待时会被挂起，当其他线程的运行使这个条件满足时，其他线程会调用 notify() 或者 notifyAll() 来唤醒挂起的线程。
+
+他们都属于 Object 的一部分，不属于 Thread。
+
+只能用在同步方法或者同步代码块中，否则会在运行时抛出 IllegalMonitorStateException 非法监视状态异常。
+
+使用 wait() 挂起期间，线程会释放锁。这是因为，如果没有释放锁，那么其他线程就无法进入对象的同步方法或者同步代码块中，也就无法执行 notify() 或者 notifyAll() 方法来唤醒挂起的线程，从而造成死锁。
+
+```java
+public class WaitTest {
+
+    public synchronized void before() {
+        System.out.println("Thread Name: " + Thread.currentThread().getName()+" before");
+        notifyAll();
+    }
+
+    public synchronized void after() {
+        try {
+            wait();
+            System.out.println("Thread Name: " + Thread.currentThread().getName()+" after");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        WaitTest waitTest = new WaitTest();
+        executorService.execute(()->waitTest.after());
+        executorService.execute(()->waitTest.before());
+
+    }
+}
+```
+```
+Thread Name: pool-1-thread-2 before
+Thread Name: pool-1-thread-1 after
+```
+
+wait() 和 sleep() 的区别
+- wait() 是 Object 的方法，而 sleep() 是 Thread 的静态方法。
+- wait() 会释放锁，sleep() 不会释放锁。
+
+### 3、await() signal() signalAll()
+java.util.concurrent 类库中提供了 Condition 类来实现线程之间的协调，可以在 Condition 上调用 await() 方法是线程等待，其他线程上调用 signal() 或者 signalAll() 方法唤醒等待的线程。
+
+相比与 wait() 方法，await() 方法可以指定等待的条件，因此更加灵活。
+
+```java
+public class AwaitTest {
+
+    private Lock lock = new ReentrantLock();
+    private Condition condition = lock.newCondition();
+
+    public void before() {
+        lock.lock();
+        try {
+            System.out.println("Thread Name: " + Thread.currentThread().getName() + " before");
+            condition.signalAll();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void after() {
+        lock.lock();
+        try {
+            condition.await();
+            System.out.println("Thread Name: " + Thread.currentThread().getName() + " after");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        AwaitTest awaitTest = new AwaitTest();
+        executorService.execute(() -> awaitTest.after());
+        executorService.execute(() -> awaitTest.before());
+    }
+}
+```
+```java
+Thread Name: pool-1-thread-2 before
+Thread Name: pool-1-thread-1 after
+```
+
+## J.U.C - AQS
+AQS：AbstractQuenedSynchronizer抽象的队列式同步器。是除了java自带的synchronized关键字之外的锁机制。
+
+java.util.concurrent（J.U.C）大大提高了并发性能，AQS 被认为是 J.U.C 的核心。
+
+### 1、CountDownLatch
+用来控制一个或者多个线程等待多个线程。
+
+维护了一个计数器 cnt，每次调用 countDown() 方法会让计数器的值减 1，减到 0 的时候，那些因为调用 await() 方法而在等待的线程就会被唤醒。
+
+```java
+public class CountDownLatchTest {
+
+    public static void main(String[] args) throws InterruptedException {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        final int totalThread = 10;
+        CountDownLatch countDownLatch = new CountDownLatch(totalThread);
+        for (int i = 0; i < totalThread; i++) {
+            executorService.execute(() -> {
+                System.out.println("Thread Name: " + Thread.currentThread().getName() + " Run...");
+                countDownLatch.countDown();
+            });
+        }
+        countDownLatch.await();
+        System.out.println("Thread Name: " + Thread.currentThread().getName() + " End");
+    }
+}
+```
+```
+Thread Name: pool-1-thread-1 Run...
+Thread Name: pool-1-thread-2 Run...
+Thread Name: pool-1-thread-3 Run...
+Thread Name: pool-1-thread-4 Run...
+Thread Name: pool-1-thread-5 Run...
+Thread Name: pool-1-thread-6 Run...
+Thread Name: pool-1-thread-7 Run...
+Thread Name: pool-1-thread-8 Run...
+Thread Name: pool-1-thread-9 Run...
+Thread Name: pool-1-thread-10 Run...
+Thread Name: main End
+```
+
+### 2、CyclicBarrier
+用来控制多个线程互相等待，只有当多个线程都到达时，这些线程才会继续执行。
+
+和 CountdownLatch 相似，都是通过维护计数器来实现的。线程执行 await() 方法之后计数器会减 1，并进行等待，直到计数器为 0，所有调用 await() 方法而在等待的线程才能继续执行。
+
+CyclicBarrier 和 CountdownLatch 的一个区别是，CyclicBarrier 的计数器通过调用 reset() 方法可以循环使用，所以它才叫做循环屏障。
+
+CyclicBarrier 有两个构造函数，其中 parties 指示计数器的初始值，barrierAction 在所有线程都到达屏障的时候会执行一次。
+
+```java
+public class CyclicBarrierTest {
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        final int totalThread = 10;
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(totalThread);
+        for (int i = 0; i < totalThread; i++) {
+            executorService.execute(()->{
+                System.out.println("Thread Name: " + Thread.currentThread().getName() + " brfore...");
+                try {
+                    cyclicBarrier.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Thread Name: " + Thread.currentThread().getName() + " after...");
+            });
+        }
+    }
+}
+```
+```
+Thread Name: pool-1-thread-1 brfore...
+Thread Name: pool-1-thread-2 brfore...
+Thread Name: pool-1-thread-3 brfore...
+Thread Name: pool-1-thread-4 brfore...
+Thread Name: pool-1-thread-5 brfore...
+Thread Name: pool-1-thread-6 brfore...
+Thread Name: pool-1-thread-7 brfore...
+Thread Name: pool-1-thread-8 brfore...
+Thread Name: pool-1-thread-9 brfore...
+Thread Name: pool-1-thread-10 brfore...
+Thread Name: pool-1-thread-10 after...
+Thread Name: pool-1-thread-1 after...
+Thread Name: pool-1-thread-2 after...
+Thread Name: pool-1-thread-3 after...
+Thread Name: pool-1-thread-4 after...
+Thread Name: pool-1-thread-5 after...
+Thread Name: pool-1-thread-6 after...
+Thread Name: pool-1-thread-7 after...
+Thread Name: pool-1-thread-9 after...
+Thread Name: pool-1-thread-8 after...
+```
+
+### 3、Semaphore
+Semaphore 类似于操作系统中的信号量，可以控制对互斥资源的访问线程数。
+
+以下代码模拟了对某个服务的并发请求，每次只能有 3 个客户端同时访问，请求总数为 10。
+
+```java
+public class SemaphoreTest {
+
+    public static void main(String[] args) {
+        final int clientCount = 3;
+        final int totalRequestCount = 10;
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        Semaphore semaphore = new Semaphore(clientCount);
+        for (int i = 0; i < totalRequestCount; i++) {
+            executorService.execute(()->{
+                try {
+                    semaphore.acquire();
+                    System.out.println("Thread Name: " + Thread.currentThread().getName() + " "+semaphore.availablePermits()+" Run...");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    semaphore.release();
+                }
+            });
+        }
+    }
+}
+```
+```
+Thread Name: pool-1-thread-1 2 Run...
+Thread Name: pool-1-thread-2 2 Run...
+Thread Name: pool-1-thread-3 2 Run...
+Thread Name: pool-1-thread-4 1 Run...
+Thread Name: pool-1-thread-5 2 Run...
+Thread Name: pool-1-thread-6 2 Run...
+Thread Name: pool-1-thread-7 1 Run...
+Thread Name: pool-1-thread-8 2 Run...
+Thread Name: pool-1-thread-9 2 Run...
+Thread Name: pool-1-thread-10 2 Run...
+```
+
+## J.U.C - 其它组件
+### 1、FutureTask
+在介绍 Callable 时我们知道它可以有返回值，返回值通过 Future 进行封装。FutureTask 实现了 RunnableFuture 接口，该接口继承自 Runnable 和 Future 接口，这使得 FutureTask 既可以当做一个任务执行，也可以有返回值。
+
+FutureTask 可用于异步获取执行结果或取消执行任务的场景。当一个计算任务需要执行很长时间，那么就可以用 FutureTask 来封装这个任务，主线程在完成自己的任务之后再去获取结果。
+
+### 2、BlockingQueue
+java.util.concurrent.BlockingQueue 接口有以下阻塞队列的实现：
+
+FIFO 队列 ：LinkedBlockingQueue、ArrayBlockingQueue（固定长度）
+优先级队列 ：PriorityBlockingQueue
+提供了阻塞的 take() 和 put() 方法：如果队列为空 take() 将阻塞，直到队列中有内容；如果队列为满 put() 将阻塞，直到队列有空闲位置。
+
+**使用 BlockingQueue 实现生产者消费者问题**
+
+```java
+public class BlockQueueTest {
+
+    private static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(5);
+
+    public static class Producer extends Thread {
+        @Override
+        public void run() {
+            try {
+                blockingQueue.put(this.getName() + " produce");
+                System.out.println(this.getName() + " produce...");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static class Consumer extends Thread {
+        @Override
+        public void run() {
+            try {
+                String take = blockingQueue.take();
+                System.out.println(this.getName() + " consume: " + take);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 2; i++) {
+            Producer producer = new Producer();
+            producer.start();
+        }
+        for (int i = 0; i < 5; i++) {
+            Consumer consumer = new Consumer();
+            consumer.start();
+        }
+        for (int i = 0; i < 3; i++) {
+            Producer producer = new Producer();
+            producer.start();
+        }
+    }
+}
+```
+```
+Thread-0 produce...
+Thread-1 produce...
+Thread-2 consume: Thread-0 produce
+Thread-3 consume: Thread-1 produce
+Thread-7 produce...
+Thread-4 consume: Thread-7 produce
+Thread-5 consume: Thread-8 produce
+Thread-6 consume: Thread-9 produce
+Thread-8 produce...
+Thread-9 produce...
+```
+
+### 3、ForkJoin
+主要用于并行计算中，和 MapReduce 原理类似，都是把大的计算任务拆分成多个小任务并行计算。
+
+```java
+public class ForkJoinTest extends RecursiveTask<Integer> {
+
+    private final int threshold = 5;
+    private int first;
+    private int last;
+
+    public ForkJoinTest(int first, int last) {
+        this.first = first;
+        this.last = last;
+    }
+
+    @Override
+    protected Integer compute() {
+        int result = 0;
+        if (last - first <= threshold) {
+            System.out.println(Thread.currentThread().getName() + " first = " + first + " last = " + last);
+            //任务范围小于临界值时直接进行计算
+            for (int i = first; i <= last; i++) {
+                result += i;
+            }
+        } else {
+            //否则拆分成小任务进行计算
+            int middle = first + ((last - first) >> 1);
+            ForkJoinTest leftForkJoinTest = new ForkJoinTest(first, middle);
+            ForkJoinTest rightForkJoinTest = new ForkJoinTest(middle + 1, last);
+            leftForkJoinTest.fork();
+            rightForkJoinTest.fork();
+            result = leftForkJoinTest.join() + rightForkJoinTest.join();
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        ForkJoinTest forkJoinTest = new ForkJoinTest(1, 100);
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        forkJoinPool.submit(forkJoinTest);
+        try {
+            System.out.println(forkJoinTest.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+```
+ForkJoinPool-1-worker-2 first = 1 last = 4
+ForkJoinPool-1-worker-2 first = 5 last = 7
+ForkJoinPool-1-worker-2 first = 8 last = 13
+ForkJoinPool-1-worker-2 first = 14 last = 19
+ForkJoinPool-1-worker-2 first = 20 last = 25
+ForkJoinPool-1-worker-2 first = 26 last = 29
+ForkJoinPool-1-worker-2 first = 30 last = 32
+ForkJoinPool-1-worker-2 first = 33 last = 38
+ForkJoinPool-1-worker-2 first = 39 last = 44
+ForkJoinPool-1-worker-2 first = 45 last = 50
+ForkJoinPool-1-worker-3 first = 51 last = 54
+ForkJoinPool-1-worker-2 first = 76 last = 79
+ForkJoinPool-1-worker-2 first = 80 last = 82
+ForkJoinPool-1-worker-2 first = 83 last = 88
+ForkJoinPool-1-worker-2 first = 89 last = 94
+ForkJoinPool-1-worker-2 first = 95 last = 100
+ForkJoinPool-1-worker-2 first = 64 last = 69
+ForkJoinPool-1-worker-2 first = 70 last = 75
+ForkJoinPool-1-worker-2 first = 58 last = 63
+ForkJoinPool-1-worker-2 first = 55 last = 57
+5050
+```
+ForkJoin 使用 ForkJoinPool 来启动，它是一个特殊的线程池，线程数量取决于 CPU 核数。
+```java
+public class ForkJoinPool extends AbstractExecutorService
+```
+ForkJoinPool 实现了工作窃取算法来提高 CPU 的利用率。每个线程都维护了一个双端队列，用来存储需要执行的任务。工作窃取算法允许空闲的线程从其它线程的双端队列中窃取一个任务来执行。窃取的任务必须是最晚的任务，避免和队列所属线程发生竞争。例如下图中，Thread2 从 Thread1 的队列中拿出最晚的 Task1 任务，Thread1 会拿出 Task2 来执行，这样就避免发生竞争。但是如果队列中只有一个任务时还是会发生竞争。
