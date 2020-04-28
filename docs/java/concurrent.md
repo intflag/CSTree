@@ -1126,3 +1126,118 @@ ForkJoin 使用 ForkJoinPool 来启动，它是一个特殊的线程池，线程
 public class ForkJoinPool extends AbstractExecutorService
 ```
 ForkJoinPool 实现了工作窃取算法来提高 CPU 的利用率。每个线程都维护了一个双端队列，用来存储需要执行的任务。工作窃取算法允许空闲的线程从其它线程的双端队列中窃取一个任务来执行。窃取的任务必须是最晚的任务，避免和队列所属线程发生竞争。例如下图中，Thread2 从 Thread1 的队列中拿出最晚的 Task1 任务，Thread1 会拿出 Task2 来执行，这样就避免发生竞争。但是如果队列中只有一个任务时还是会发生竞争。
+
+## Java 的内存模型
+### 0、计算机中的木桶理论
+计算机的 CPU、内存、I/O 设备的性能随着技术发展变得越来越快，但是一直有个核心矛盾存在，那就是这三者的速度差异，如果我们把 CPU 执行一条普通指令看做「天上一天」的话，那 CPU 读写内存的速度就是「地上一年」，而内存和 I/O 设备的速度差异更大，内存是「天上一天」，I/O 设备是「地上十年」。
+
+根据「木桶理论」，程序的性能取决于最慢的操作，那就是读写 I/O 设备，也就是说单方面提高 CPU 的性能是无效的。
+
+为了合理利用 CPU 的高性能，平衡这三者的速度差异，计算机体系结构、操作系统、编译程序都做出了贡献，主要体现为：
+- CPU 增加了缓存，以均衡与内存的速度差异；
+- 操作系统增加了进程、线程，以分时复用 CPU，进而均衡 CPU 与 I/O 设备的速度差异；
+- 编译程序优化指令执行次序，使缓存能否得到更加合理地利用。
+
+天下没有免费的午餐，并发程序很多诡异问题的根源也在这里。
+### 1、缓存导致的可见性问题
+
+一个线程对共享变量的修改，另外一个线程能够立即看到，我们成为**可见性**。
+
+在多核时代，每颗 CPU 都有自己的缓存，多个线程在不同 CPU 上执行时，操作的是不同的 CPU 缓存。
+
+![多核 CPU 的缓存与内存关系图](http://images.intflag.com/mem01.png)
+
+如上图所示，线程 A 操作的是 CPU-1 的缓存，而线程 B 操作的是 CPU-2 的缓存，这个时候线程 A 对变量 V 的操作对线程 B 而言就不具备可见性了。
+
+验证多核场景下的可见性问题：
+```java
+public class VisibilityTest {
+    public long count = 0;
+
+    public void add10K() {
+        int i = 0;
+        while (i++ < 10000) {
+            count += 1;
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        VisibilityTest visibilityTest = new VisibilityTest();
+        //创建两个线程，执行 add10K 操作
+        Thread t1 = new Thread(() -> visibilityTest.add10K());
+        Thread t2 = new Thread(() -> visibilityTest.add10K());
+        //启动两个线程
+        t1.start();
+        t2.start();
+        //等待两个程序结束
+        t1.join();
+        t2.join();
+        System.out.println(visibilityTest.count);
+    }
+}
+```
+```
+16438
+```
+累加一万次结果在1万到2万之间。
+
+我们假设线程 A 和线程 B 同时开始执行，那么第一次都会将 count=0 读到各自的 CPU 缓存里，执行完 count+=1 之后，各自 CPU 缓存里的值都是 1，同时写入内存后，我们会发现内存中是 1，而不是我们期望的 2。之后由于各自的 CPU 缓存里都有了 count 的值，两个线程都是基于 CPU 缓存里的 count 值来计算，所以导致最终 count 的值都是小于 20000 的。这就是缓存的可见性问题。
+```
+100007570
+```
+改为累加一亿次效果更为明显，最终 count 的值接近 1 亿，而不是 2 亿。如果循环 10000 次，count 的值接近 20000，原因是两个线程不是同时启动的，有一个时差。
+
+**避免这种问题：**
+
+**1）使用原子类**
+```java
+public class VisibilityTest {
+
+    public AtomicLong count = new AtomicLong();
+
+    public void add10K() {
+        int i = 0;
+        while (i++ < 100000000) {
+            count.addAndGet(1);
+        }
+    }
+}
+```
+**2）使用 synchronized 互斥锁**
+```java
+public class VisibilityTest {
+
+    public long count = 0;
+
+    public synchronized void add10K() {
+        int i = 0;
+        while (i++ < 100000000) {
+            count += 1;
+        }
+    }
+}
+```
+**3）使用 ReentrantLock 加锁**
+```java
+public class VisibilityTest {
+
+    private long count = 0;
+
+    private Lock lock = new ReentrantLock();
+
+    public void add10K() {
+        lock.lock();
+        try {
+            int i = 0;
+            while (i++ < 100000000) {
+                count += 1;
+            }
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+```
+经过验证，使用原子类大概耗时 2400ms 左右，使用 synchronized 和 ReentrantLock 基本都在 90ms 左右。
+
+ⅡⅢⅣⅤ
