@@ -366,24 +366,24 @@ public final void wait() throws InterruptedException
 
 两个对象具有等价关系，需要满足以下五个条件：
 
-Ⅰ 自反性
+1）自反性
 ```
 a.equals(a); // true
 ```
 
-Ⅱ 对称性
+2）对称性
 ```
 a.equals(b) == b.equals(a); // true
 ```
 
-Ⅲ 传递性
+3）传递性
 ```
 if (a.equals(b) && b.equals(c)) {
     a.equals(c); // true;
 }
 ```
 
-Ⅳ 一致性
+4）一致性
 
 多次调用 equals() 方法结果不变
 ```
@@ -681,12 +681,12 @@ System.out.println(e2.get(2)); // 2
 
 Ⅰ加载：就是将 class 文件动态加载到JVM中，并为之创建一个 class 对象。任何类被使用时系统都会建立一个class对象。
 
-Ⅱ 连接：
+2）连接：
 - 验证：是否有正确的内部结构，并且与其他类协调一致。
 - 准备：负责为类的静态成员分配内存，并设置默认初始化值。
 - 解析：将类的二进制数据中的符号引用替换为直接引用。
 
-Ⅲ 初始化：参考下面说明。
+3）初始化：参考下面说明。
 ```
 Student s = new Student();
 
@@ -777,7 +777,7 @@ public class ReflectTest {
 
 > 以下示例为了减少篇幅，不捕获异常，采用抛出的方式
 
-Ⅰ 通过反射获取带参构造方法并使用
+1）通过反射获取带参构造方法并使用
 ```
 @Test
 public void constructorTest() throws Exception {
@@ -790,7 +790,7 @@ public void constructorTest() throws Exception {
     }
 }
 ```
-Ⅱ 通过反射获取成员变量并使用
+2）通过反射获取成员变量并使用
 ```
 @Test
 public void fieldTest() throws Exception {
@@ -810,7 +810,7 @@ public void fieldTest() throws Exception {
     System.out.println(person);
 }
 ```
-Ⅲ 通过反射获取成员方法并使用
+3）通过反射获取成员方法并使用
 ```
 @Test
 public void methodTest() throws Exception {
@@ -827,7 +827,7 @@ public void methodTest() throws Exception {
 }
 ```
 
-Ⅳ 通过反射越过泛型检查
+4）通过反射越过泛型检查
 ```
 @Test
 public void genericsTest() throws Exception {

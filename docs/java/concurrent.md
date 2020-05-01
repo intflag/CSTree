@@ -526,7 +526,7 @@ future.cancel(true);
 Java 提供了两种锁机制来控制多个线程对共享资源的互斥访问，第一个是 JVM 实现的 synchronized，而另一个是 JDK 实现的 ReentrantLock。
 
 ### 1、synchronized
-**Ⅰ 同步代码块**
+**1）同步代码块**
 ```java
 public void fun() {
     synchronized (this) {
@@ -612,7 +612,7 @@ Thread Name: pool-1-thread-2, i = 8
 Thread Name: pool-1-thread-2, i = 9
 ```
 
-**Ⅱ 同步方法**
+**2）同步方法**
 ```java
 public synchronized void fun () {
     // ...
@@ -620,7 +620,7 @@ public synchronized void fun () {
 ```
 它和同步代码块一样，作用于同一个对象。
 
-**Ⅲ 同步类**
+**3）同步类**
 ```java
 public void fun() {
     synchronized (SynchronizedTest.class) {
@@ -672,7 +672,7 @@ Thread Name: pool-1-thread-2, i = 7
 Thread Name: pool-1-thread-2, i = 8
 Thread Name: pool-1-thread-2, i = 9
 ```
-**Ⅳ 同步静态方法**
+**4）同步静态方法**
 ```java
 public synchronized static void fun() {
     // ...
@@ -731,27 +731,27 @@ Thread Name: pool-1-thread-2, i = 9
 ```
 
 ### 3、synchronized 与 ReentrantLock 比较
-**Ⅰ 锁的实现**
+**1）锁的实现**
 
 synchronized 是 JVM 实现的，ReentrantLock 是 JDK 实现的。
 
-**Ⅱ 性能**
+**2）性能**
 
 新版本 Java 对 synchronized 进行了很多优化，例如自旋锁等，synchronized 与 ReentrantLock 大致相同。
 
-**Ⅲ 等待可中断**
+**3）等待可中断**
 
 当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理其他事情。
 
 ReentrantLock 可中断，而 synchronized 不行。
 
-**Ⅳ 公平锁**
+**4）公平锁**
 
 公平锁是指多个线程在等待同一个锁时，必须按照申请锁的时间顺序来依次获得锁。
 
 synchronized 中的锁是非公平的，ReentrantLock 默认情况下也是非公平的，但是也可以是公平的。
 
-**Ⅴ 锁绑定多个条件**
+**5）锁绑定多个条件**
 
 一个 ReentrantLock 可以同时绑定多个 Condition 对象。
 
