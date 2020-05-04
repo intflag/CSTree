@@ -167,7 +167,7 @@ public class ConcurrentTest {
 - 普通类初始化
 ```dot
 digraph demo{
-    a [shape = record, label = "静态代码块及静态成员"];
+    a [shape = record, label = "&nbsp;&nbsp;静态代码块及静态成员&nbsp;&nbsp;"];
     b [shape = record, label = "构造代码块"];
     c [shape = record, label = "构造方法"];
     a -> b -> c;
@@ -177,8 +177,8 @@ digraph demo{
 - 继承体系初始化
 ```dot
 digraph demo{
-    a [shape = record, label = "父类静态代码块及静态成员"];
-    b [shape = record, label = "子类静态代码块及静态成员"];
+    a [shape = record, label = "&nbsp;&nbsp;父类静态代码块及静态成员&nbsp;&nbsp;"];
+    b [shape = record, label = "&nbsp;&nbsp;子类静态代码块及静态成员&nbsp;&nbsp;"];
     c [shape = record, label = "父类构造代码块"];
     d [shape = record, label = "父类构造方法"];
     e [shape = record, label = "子类构造代码块"];
@@ -679,7 +679,7 @@ System.out.println(e2.get(2)); // 2
 
 当程序在第一次使用某个类的时候，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。
 
-Ⅰ加载：就是将 class 文件动态加载到JVM中，并为之创建一个 class 对象。任何类被使用时系统都会建立一个class对象。
+1）加载：就是将 class 文件动态加载到JVM中，并为之创建一个 class 对象。任何类被使用时系统都会建立一个class对象。
 
 2）连接：
 - 验证：是否有正确的内部结构，并且与其他类协调一致。
@@ -806,8 +806,8 @@ public void fieldTest() throws Exception {
     //Field age = clazz.getField("age");              //执行报错：java.lang.NoSuchFieldException: age 因为getField方法只能获取公有属性
     Field age = clazz.getDeclaredField("age");       //暴力反射获取字段
     age.setAccessible(true);        //去除age属性的私有权限，否则将报错：java.lang.IllegalAccessException: Class basics.ReflectTest can not access a member of class com.intflag.bean.Person with modifiers "private"
-    age.set(person, 20);            //Person{name='jerry', age=20}
-    System.out.println(person);
+    age.set(person, 20);            
+    System.out.println(person);     //Person{name='jerry', age=20}
 }
 ```
 3）通过反射获取成员方法并使用
