@@ -1,5 +1,5 @@
 # 工作中常用的Linux命令
-## 常用Linux命令一览表
+## 常用命令
 |功能|命令|说明|
 |:----|:----|:----|
 |时间逆序查看|ls -lrt||
@@ -13,7 +13,7 @@
 |建立多级目录|mkdir -p /opt/m1/m2/m3|当目录不存在时会建立| 
 |查找文件|find 查找路径 文件名称|例：find . ".jar" \| xargs grep "CodeManager" 查找某个类在哪个jar包中|
 
-## 实用小技巧
+## 常用脚本
 ### 1、快速修改tomcat端口
 ```
 sed -i 's/port="8005"/port="18005"/g' server.xml
