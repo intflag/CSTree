@@ -15,6 +15,8 @@
 
 - 数据库
 
+    - [数据库系统原理](database/database.md)
+
     - [SQL优化](database/sql.md)
 
 - 程序设计
