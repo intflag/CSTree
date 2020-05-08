@@ -818,33 +818,40 @@ protected boolean removeEldestEntry(Map.Entry<K,V> eldest) {
 - 设定最大缓存空间 MAX_ENTRIES 为 3；
 - 使用 LinkedHashMap 的构造函数将 accessOrder 设置为 true，开启 LRU 顺序；
 - 覆盖 removeEldestEntry() 方法实现，在节点多于 MAX_ENTRIES 就会将最近最久未使用的数据移除。
-```
-class LRUCache<K, V> extends LinkedHashMap<K, V> {
+
+```java
+public class LRUCache<K, V> extends LinkedHashMap {
+
     private static final int MAX_ENTRIES = 3;
 
+    @Override
     protected boolean removeEldestEntry(Map.Entry eldest) {
         return size() > MAX_ENTRIES;
     }
 
-    LRUCache() {
-        super(MAX_ENTRIES, 0.75f, true);
+    public LRUCache() {
+        super(MAX_ENTRIES, 0.75F, true);
+    }
+
+    public static void main(String[] args) {
+        LRUCache<String,String> cache = new LRUCache<>();
+        cache.put("1","张三");
+        cache.put("2","李四");
+        cache.put("3","王五");
+        System.out.println(cache);
+        cache.get("1");
+        System.out.println(cache);
+        cache.put("4","赵六");
+        System.out.println(cache);
     }
 }
 ```
 ```
-public static void main(String[] args) {
-    LRUCache<Integer, String> cache = new LRUCache<>();
-    cache.put(1, "a");
-    cache.put(2, "b");
-    cache.put(3, "c");
-    cache.get(1);
-    cache.put(4, "d");
-    System.out.println(cache.keySet());
-}
+{1=张三, 2=李四, 3=王五}
+{2=李四, 3=王五, 1=张三}
+{3=王五, 1=张三, 4=赵六}
 ```
-```
-[3, 1, 4]
-```
+
 
 ## WeakHashMap
 ### 1、存储结构
