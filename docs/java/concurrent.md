@@ -475,9 +475,24 @@ Future 对象提供了异步执行，意味着无需等待任务执行完成，�
 ![](http://images.intflag.com/executor02.png)
 
 ### 5、Executors
-Executors 是一个工具类，类似于 Collections。 提供工厂方法来创建不同类型的线程池，例如 FixedThreadPool 或者 CacheThreadPool。
+Executors 是一个工具类，类似于 Collections。 提供工厂方法来创建不同类型的线程池。
 
 ![](http://images.intflag.com/executor03.png)
+
+**1）Executors 四种线程池**
+
+| 线程池              | 功能                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| newCachedThreadPool     | 可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。 |
+| newFixedThreadPool      | 定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。 |
+| newScheduledThreadPool  | 定长线程池，支持定时及周期性任务执行。                       |
+| newSingleThreadExecutor | 单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序（FIFO, LIFO 优先级）执行。 |
+
+**2）生产实践**
+
+在《阿里巴巴Java开发手册》中强制规定：
+- 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程。因为线程池的好处是减少在创建和销毁线程上所消耗的时间以及系统资源的开销，解决资源不足的问题。如果不使用线程池，有可能造成系统创建大量同类线程而导致消耗完内存或者“过度切换” 的问题。
+- 线程池不允许使用 Executors 去创建，而是通过 `ThreadPoolExecutor` 的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。并且 Executors 返回的线程池对象具有弊端，FixedThreadPool 和 SingleThreadPool 允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM，而CachedThreadPool 允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，也会导致 OOM。
 
 ### 6、Executor 的中断操作
 调用 Executor 的 shutdown() 方法会等待线程都执行完毕之后再关闭，但是如果调用的是 shutdownNow() 方法，则相当于调用每个线程的 interrupt() 方法。
@@ -809,7 +824,7 @@ wait() 和 sleep() 的区别
 - wait() 会释放锁，sleep() 不会释放锁。
 
 ### 3、await() signal() signalAll()
-java.util.concurrent 类库中提供了 Condition 类来实现线程之间的协调，可以在 Condition 上调用 await() 方法是线程等待，其他线程上调用 signal() 或者 signalAll() 方法唤醒等待的线程。
+java.util.concurrent 类库中提供了 Condition 类来实现线程之间的协调，可以在 Condition 上调用 await() 方法使线程等待，其他线程上调用 signal() 或者 signalAll() 方法唤醒等待的线程。
 
 相比与 wait() 方法，await() 方法可以指定等待的条件，因此更加灵活。
 
